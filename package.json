@@ -6,8 +6,11 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "format": "prettier --write --ignore-unknown .",
+    "prettier:check": "prettier --check --ignore-unknown .",
     "preview": "vite preview",
-    "deploy": "pnpm build && gh-pages -d ./dist"
+    "predeploy": "pnpm build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@ark-ui/solid": "^3.5.0",
@@ -36,6 +39,7 @@
   "devDependencies": {
     "@types/p5": "^1.7.6",
     "gh-pages": "^6.1.1",
+    "prettier": "^3.3.3",
     "typescript": "^5.2.2",
     "vite": "^5.3.4",
     "vite-plugin-node-polyfills": "^0.22.0",
