@@ -23,4 +23,3 @@
   height: 100%;
   opacity: min(90%, calc((var(--scroll) - 12%) * 11));
 }
-

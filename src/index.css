@@ -19,16 +19,16 @@
   font-size: 14px;
   --unit: 1em;
   --scroll: 0%;
-  --flick: cubic-bezier(.36,2.09,.07,-1.52);
+  --flick: cubic-bezier(0.36, 2.09, 0.07, -1.52);
 
-  --amber: #FFA43A;
-  --pumpkin: #FF9548;
-  --flux: #C8BE50;
-  --foam: #CAD5AA;
-  --enamel: #F2F2F2;
-  --cement: #C0C0C0;
-  --ash: #BBBBBB;
-  --clay: #70705C;
+  --amber: #ffa43a;
+  --pumpkin: #ff9548;
+  --flux: #c8be50;
+  --foam: #cad5aa;
+  --enamel: #f2f2f2;
+  --cement: #c0c0c0;
+  --ash: #bbbbbb;
+  --clay: #70705c;
   --smoke: #666666;
   --carbon: #222222;
   --black: #141414;
@@ -43,7 +43,8 @@
   /* background-color: hsl(30 1% calc(100% -  min(88%, var(--scroll) * 8))); */
 }
 
-@media (prefers-color-scheme: dark) {}
+@media (prefers-color-scheme: dark) {
+}
 
 body {
   overflow-x: hidden;
@@ -75,10 +76,10 @@ main {
 
   color: var(--fg);
   background-color: var(--bg);
-
 }
 
-section, footer { 
+section,
+footer {
   display: grid;
   place-items: center;
   padding: 2rem;
@@ -125,4 +126,3 @@ section, footer {
 .accent {
   color: var(--accent);
 }
-

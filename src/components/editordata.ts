@@ -1,4 +1,3 @@
-
 import { Extension } from "@codemirror/state";
 import { EditorView } from "@codemirror/view";
 import { HighlightStyle, syntaxHighlighting } from "@codemirror/language";
@@ -12,93 +11,102 @@ import { rust } from "@codemirror/lang-rust";
 import { sql } from "@codemirror/lang-sql";
 
 export enum Language {
-	GO = "go",
-	JAVASCRIPT = "javascript",
-	MARKDOWN = "markdown",
-	RUST = "rust",
-	SQL = "sql",
-	TYPESCRIPT = "typescript",
-};
+  GO = "go",
+  JAVASCRIPT = "javascript",
+  MARKDOWN = "markdown",
+  RUST = "rust",
+  SQL = "sql",
+  TYPESCRIPT = "typescript",
+}
 
 export const theme = EditorView.theme({
-	"&": {
-		color: "var(--cement)",
-		backgroundColor: "var(--carbon)",
-	},
-	".cm-content": { caretColor: "var(--cement)" },
-	".cm-cursor, .cm-dropCursor": { borderLeftColor: "var(--cement)" },
-	"&.cm-focused > .cm-scroller > .cm-selectionLayer .cm-selectionBackground, .cm-selectionBackground, .cm-content ::selection": {
-		backgroundColor: "var(--ash)",
-	},
-
+  "&": {
+    color: "var(--cement)",
+    backgroundColor: "var(--carbon)",
+  },
+  ".cm-content": { caretColor: "var(--cement)" },
+  ".cm-cursor, .cm-dropCursor": { borderLeftColor: "var(--cement)" },
+  "&.cm-focused > .cm-scroller > .cm-selectionLayer .cm-selectionBackground, .cm-selectionBackground, .cm-content ::selection":
+    {
+      backgroundColor: "var(--ash)",
+    },
 });
 
 export const syntax = syntaxHighlighting(
-	HighlightStyle.define([
-		{ tag: t.keyword, color: "var(--pumpkin)" },
-		{
-			tag: [t.name, t.deleted, t.character, t.propertyName, t.macroName],
-			color: "var(--cement)",
-		},
-		{
-			tag: [t.function(t.variableName), t.labelName],
-			color: "var(--enamel)",
-		},
-		// {
-		// 	tag: [t.color, t.constant(t.name), t.standard(t.name)],
-		// 	color: "var(--flux)",
-		// },
-		// {
-		// 	tag: [t.definition(t.name), t.separator],
-		// 	color: "var(--clay)",
-		// },
-		{
-			tag: [t.typeName, t.className, t.number, t.changed, t.annotation, t.modifier, t.self, t.namespace],
-			color: "var(--amber)",
-		},
-		// {
-		// 	tag: [t.operator, t.operatorKeyword, t.url, t.escape, t.regexp, t.link, t.special(t.string)],
-		// 	color: "var(--ash)",
-		// },
-		{
-			tag: [t.meta, t.comment],
-			color: "var(--clay)",
-		},
-		{
-			tag: t.strong,
-			fontWeight: "bold",
-		},
-		{
-			tag: t.emphasis,
-			fontStyle: "italic",
-		},
-		{
-			tag: t.strikethrough,
-			textDecoration: "line-through",
-		},
-		{
-			tag: t.link,
-			color: "var(--flux)",
-			textDecoration: "underline",
-		},
-		{
-			tag: t.heading,
-			fontWeight: "bold",
-			color: "var(--amber)",
-		},
-		{
-			tag: [t.atom, t.bool, t.special(t.variableName)],
-			color: "var(--enamel)",
-		},
-		{
-			tag: [t.processingInstruction, t.string, t.inserted],
-			color: "var(--flux)",
-		},
-		{
-			tag: t.invalid,
-			color: "var(--foam)",
-		},
-	])
+  HighlightStyle.define([
+    { tag: t.keyword, color: "var(--pumpkin)" },
+    {
+      tag: [t.name, t.deleted, t.character, t.propertyName, t.macroName],
+      color: "var(--cement)",
+    },
+    {
+      tag: [t.function(t.variableName), t.labelName],
+      color: "var(--enamel)",
+    },
+    // {
+    // 	tag: [t.color, t.constant(t.name), t.standard(t.name)],
+    // 	color: "var(--flux)",
+    // },
+    // {
+    // 	tag: [t.definition(t.name), t.separator],
+    // 	color: "var(--clay)",
+    // },
+    {
+      tag: [
+        t.typeName,
+        t.className,
+        t.number,
+        t.changed,
+        t.annotation,
+        t.modifier,
+        t.self,
+        t.namespace,
+      ],
+      color: "var(--amber)",
+    },
+    // {
+    // 	tag: [t.operator, t.operatorKeyword, t.url, t.escape, t.regexp, t.link, t.special(t.string)],
+    // 	color: "var(--ash)",
+    // },
+    {
+      tag: [t.meta, t.comment],
+      color: "var(--clay)",
+    },
+    {
+      tag: t.strong,
+      fontWeight: "bold",
+    },
+    {
+      tag: t.emphasis,
+      fontStyle: "italic",
+    },
+    {
+      tag: t.strikethrough,
+      textDecoration: "line-through",
+    },
+    {
+      tag: t.link,
+      color: "var(--flux)",
+      textDecoration: "underline",
+    },
+    {
+      tag: t.heading,
+      fontWeight: "bold",
+      color: "var(--amber)",
+    },
+    {
+      tag: [t.atom, t.bool, t.special(t.variableName)],
+      color: "var(--enamel)",
+    },
+    {
+      tag: [t.processingInstruction, t.string, t.inserted],
+      color: "var(--flux)",
+    },
+    {
+      tag: t.invalid,
+      color: "var(--foam)",
+    },
+  ]),
 );
 
 const goSnippet = `\
@@ -316,27 +324,26 @@ impl <'t> LifeSupport<'t> {
     }
 }`;
 
-
-export const Snippets: Record<Language, { syntax: Extension, doc: string }> = {
-	[Language.GO]: {
-		syntax: go(),
-		doc: goSnippet,
-	},
-	[Language.JAVASCRIPT]: {
-		syntax: javascript(),
-		doc: jsSnippet,
-	},
-	[Language.MARKDOWN]: {
-		syntax: markdown(),
-		doc: mdSnippet,
-	},
-	[Language.RUST]: {
-		syntax: rust(),
-		doc: rsSnippet,
-	},
-	[Language.SQL]: {
-		syntax: sql(),
-		doc: `\
+export const Snippets: Record<Language, { syntax: Extension; doc: string }> = {
+  [Language.GO]: {
+    syntax: go(),
+    doc: goSnippet,
+  },
+  [Language.JAVASCRIPT]: {
+    syntax: javascript(),
+    doc: jsSnippet,
+  },
+  [Language.MARKDOWN]: {
+    syntax: markdown(),
+    doc: mdSnippet,
+  },
+  [Language.RUST]: {
+    syntax: rust(),
+    doc: rsSnippet,
+  },
+  [Language.SQL]: {
+    syntax: sql(),
+    doc: `\
 -- Summarize largest and most prominent space missions from Bloc Gamma
 WITH gamma_bloc_missions AS (
     SELECT
@@ -367,11 +374,11 @@ SELECT
     astronaut_count
 FROM 
     gamma_bloc_missions;
-`
-	},
-	[Language.TYPESCRIPT]: {
-		syntax: javascript({ typescript: true }),
-		doc: `\
+`,
+  },
+  [Language.TYPESCRIPT]: {
+    syntax: javascript({ typescript: true }),
+    doc: `\
 const GRAVITATIONAL_CONSTANT: number = 9.81; // m/s^2, Earth's gravitational constant
 const EARTH_RADIUS: number = 6371; // km, average radius of the Earth
 
@@ -402,6 +409,5 @@ const mass = 2000; // kg, mass of the spacecraft
 
 gimbalEngines(reentryAngle(speed, azimuth, altitude, mass));
 `,
-	},
+  },
 };
-

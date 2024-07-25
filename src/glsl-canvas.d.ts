@@ -3,7 +3,7 @@ declare module "glslCanvas" {
     wasValid: boolean;
     frag: string;
     vert: string;
-    timeElapsedMs: number
+    timeElapsedMs: number;
   };
 
   export default class GlslCanvas {
@@ -11,8 +11,16 @@ declare module "glslCanvas" {
     destroy();
     load(fragString: string);
     load(fragString: string, vertString: string);
-    test(callback: (r: TestResult) => void, fragString: string, vertString: string);
-    loadTexture(name: string, urlElementOrData: string | URL | ImageData, options: any);
+    test(
+      callback: (r: TestResult) => void,
+      fragString: string,
+      vertString: string,
+    );
+    loadTexture(
+      name: string,
+      urlElementOrData: string | URL | ImageData,
+      options: any,
+    );
     uniform(method: string, type: string, name: string, ...value: any[]);
     uniformTexture(name: string, texture, options);
     setUniform(name: string, ...value: any[]);

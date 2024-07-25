@@ -37,7 +37,7 @@ export function Deparkanoid() {
       soundBounce = p.createAudio("2.mp3");
       soundBreak = p.createAudio("5.mp3");
       soundDie = p.createAudio("6.mp3");
-    }
+    };
 
     p.setup = () => {
       canv = p.createCanvas(880, 600, p.P2D, el);
@@ -74,7 +74,7 @@ export function Deparkanoid() {
         ball.reset();
         reset(p);
       });
-    }
+    };
 
     p.draw = () => {
       p.background(Colors.carbon);
@@ -98,157 +98,781 @@ export function Deparkanoid() {
 
       ball.checkBricks(bricks);
       ui.show();
-    }
+    };
   }
 
   function reset(p: p5) {
     score = 0;
     bricks = [
       // LEFT ANTENNA
-      new Brick(p, 2 * BRICK_WIDTH, 0 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.smoke),
-      new Brick(p, 2 * BRICK_WIDTH, 1 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.smoke),
-      new Brick(p, 3 * BRICK_WIDTH, 2 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.smoke),
-      new Brick(p, 3 * BRICK_WIDTH, 3 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.smoke),
+      new Brick(
+        p,
+        2 * BRICK_WIDTH,
+        0 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.smoke),
+      new Brick(
+        p,
+        2 * BRICK_WIDTH,
+        1 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.smoke),
+      new Brick(
+        p,
+        3 * BRICK_WIDTH,
+        2 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.smoke),
+      new Brick(
+        p,
+        3 * BRICK_WIDTH,
+        3 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.smoke),
 
       // RIGHT ANTENNA
-      new Brick(p, 8 * BRICK_WIDTH, 0 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.smoke),
-      new Brick(p, 8 * BRICK_WIDTH, 1 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.smoke),
-      new Brick(p, 7 * BRICK_WIDTH, 2 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.smoke),
-      new Brick(p, 7 * BRICK_WIDTH, 3 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.smoke),
+      new Brick(
+        p,
+        8 * BRICK_WIDTH,
+        0 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.smoke),
+      new Brick(
+        p,
+        8 * BRICK_WIDTH,
+        1 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.smoke),
+      new Brick(
+        p,
+        7 * BRICK_WIDTH,
+        2 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.smoke),
+      new Brick(
+        p,
+        7 * BRICK_WIDTH,
+        3 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.smoke),
 
       // LEFT EYE
-      new Brick(p, 3 * BRICK_WIDTH, 6 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.smoke),
-      new Brick(p, 3 * BRICK_WIDTH, 7 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.smoke),
+      new Brick(
+        p,
+        3 * BRICK_WIDTH,
+        6 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.smoke),
+      new Brick(
+        p,
+        3 * BRICK_WIDTH,
+        7 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.smoke),
 
       // RIGHT EYE
-      new Brick(p, 7 * BRICK_WIDTH, 6 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.smoke),
-      new Brick(p, 7 * BRICK_WIDTH, 7 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.smoke),
+      new Brick(
+        p,
+        7 * BRICK_WIDTH,
+        6 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.smoke),
+      new Brick(
+        p,
+        7 * BRICK_WIDTH,
+        7 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.smoke),
 
       // BODY
-      new Brick(p, 2 * BRICK_WIDTH, 4 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 3 * BRICK_WIDTH, 4 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 4 * BRICK_WIDTH, 4 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 5 * BRICK_WIDTH, 4 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 6 * BRICK_WIDTH, 4 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 7 * BRICK_WIDTH, 4 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 8 * BRICK_WIDTH, 4 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
+      new Brick(
+        p,
+        2 * BRICK_WIDTH,
+        4 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        3 * BRICK_WIDTH,
+        4 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        4 * BRICK_WIDTH,
+        4 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        5 * BRICK_WIDTH,
+        4 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        6 * BRICK_WIDTH,
+        4 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        7 * BRICK_WIDTH,
+        4 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        8 * BRICK_WIDTH,
+        4 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
 
-      new Brick(p, 2 * BRICK_WIDTH, 5 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 3 * BRICK_WIDTH, 5 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 4 * BRICK_WIDTH, 5 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 5 * BRICK_WIDTH, 5 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 6 * BRICK_WIDTH, 5 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 7 * BRICK_WIDTH, 5 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 8 * BRICK_WIDTH, 5 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
+      new Brick(
+        p,
+        2 * BRICK_WIDTH,
+        5 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        3 * BRICK_WIDTH,
+        5 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        4 * BRICK_WIDTH,
+        5 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        5 * BRICK_WIDTH,
+        5 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        6 * BRICK_WIDTH,
+        5 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        7 * BRICK_WIDTH,
+        5 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        8 * BRICK_WIDTH,
+        5 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
 
-      new Brick(p, 1 * BRICK_WIDTH, 6 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 2 * BRICK_WIDTH, 6 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 4 * BRICK_WIDTH, 6 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 5 * BRICK_WIDTH, 6 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 6 * BRICK_WIDTH, 6 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 8 * BRICK_WIDTH, 6 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 9 * BRICK_WIDTH, 6 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
+      new Brick(
+        p,
+        1 * BRICK_WIDTH,
+        6 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        2 * BRICK_WIDTH,
+        6 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        4 * BRICK_WIDTH,
+        6 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        5 * BRICK_WIDTH,
+        6 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        6 * BRICK_WIDTH,
+        6 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        8 * BRICK_WIDTH,
+        6 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        9 * BRICK_WIDTH,
+        6 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
 
-      new Brick(p, 1 * BRICK_WIDTH, 7 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 2 * BRICK_WIDTH, 7 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 4 * BRICK_WIDTH, 7 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 5 * BRICK_WIDTH, 7 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 6 * BRICK_WIDTH, 7 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 8 * BRICK_WIDTH, 7 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 9 * BRICK_WIDTH, 7 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
+      new Brick(
+        p,
+        1 * BRICK_WIDTH,
+        7 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        2 * BRICK_WIDTH,
+        7 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        4 * BRICK_WIDTH,
+        7 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        5 * BRICK_WIDTH,
+        7 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        6 * BRICK_WIDTH,
+        7 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        8 * BRICK_WIDTH,
+        7 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        9 * BRICK_WIDTH,
+        7 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
 
-      new Brick(p, 0 * BRICK_WIDTH, 8 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 1 * BRICK_WIDTH, 8 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 2 * BRICK_WIDTH, 8 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 3 * BRICK_WIDTH, 8 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 4 * BRICK_WIDTH, 8 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 5 * BRICK_WIDTH, 8 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 6 * BRICK_WIDTH, 8 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 7 * BRICK_WIDTH, 8 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 8 * BRICK_WIDTH, 8 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 9 * BRICK_WIDTH, 8 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 10 * BRICK_WIDTH, 8 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
+      new Brick(
+        p,
+        0 * BRICK_WIDTH,
+        8 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        1 * BRICK_WIDTH,
+        8 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        2 * BRICK_WIDTH,
+        8 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        3 * BRICK_WIDTH,
+        8 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        4 * BRICK_WIDTH,
+        8 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        5 * BRICK_WIDTH,
+        8 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        6 * BRICK_WIDTH,
+        8 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        7 * BRICK_WIDTH,
+        8 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        8 * BRICK_WIDTH,
+        8 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        9 * BRICK_WIDTH,
+        8 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        10 * BRICK_WIDTH,
+        8 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
 
-      new Brick(p, 0 * BRICK_WIDTH, 9 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 1 * BRICK_WIDTH, 9 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 2 * BRICK_WIDTH, 9 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 3 * BRICK_WIDTH, 9 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 4 * BRICK_WIDTH, 9 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 5 * BRICK_WIDTH, 9 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 6 * BRICK_WIDTH, 9 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 7 * BRICK_WIDTH, 9 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 8 * BRICK_WIDTH, 9 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 9 * BRICK_WIDTH, 9 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 10 * BRICK_WIDTH, 9 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
+      new Brick(
+        p,
+        0 * BRICK_WIDTH,
+        9 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        1 * BRICK_WIDTH,
+        9 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        2 * BRICK_WIDTH,
+        9 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        3 * BRICK_WIDTH,
+        9 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        4 * BRICK_WIDTH,
+        9 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        5 * BRICK_WIDTH,
+        9 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        6 * BRICK_WIDTH,
+        9 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        7 * BRICK_WIDTH,
+        9 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        8 * BRICK_WIDTH,
+        9 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        9 * BRICK_WIDTH,
+        9 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        10 * BRICK_WIDTH,
+        9 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
 
-      new Brick(p, 0 * BRICK_WIDTH, 10 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 1 * BRICK_WIDTH, 10 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 2 * BRICK_WIDTH, 10 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 3 * BRICK_WIDTH, 10 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 4 * BRICK_WIDTH, 10 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 5 * BRICK_WIDTH, 10 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 6 * BRICK_WIDTH, 10 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 7 * BRICK_WIDTH, 10 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 8 * BRICK_WIDTH, 10 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 9 * BRICK_WIDTH, 10 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 10 * BRICK_WIDTH, 10 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
+      new Brick(
+        p,
+        0 * BRICK_WIDTH,
+        10 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        1 * BRICK_WIDTH,
+        10 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        2 * BRICK_WIDTH,
+        10 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        3 * BRICK_WIDTH,
+        10 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        4 * BRICK_WIDTH,
+        10 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        5 * BRICK_WIDTH,
+        10 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        6 * BRICK_WIDTH,
+        10 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        7 * BRICK_WIDTH,
+        10 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        8 * BRICK_WIDTH,
+        10 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        9 * BRICK_WIDTH,
+        10 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        10 * BRICK_WIDTH,
+        10 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
 
-      new Brick(p, 0 * BRICK_WIDTH, 11 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 1 * BRICK_WIDTH, 11 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 2 * BRICK_WIDTH, 11 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 3 * BRICK_WIDTH, 11 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 4 * BRICK_WIDTH, 11 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 5 * BRICK_WIDTH, 11 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 6 * BRICK_WIDTH, 11 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 7 * BRICK_WIDTH, 11 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 8 * BRICK_WIDTH, 11 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 9 * BRICK_WIDTH, 11 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 10 * BRICK_WIDTH, 11 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
+      new Brick(
+        p,
+        0 * BRICK_WIDTH,
+        11 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        1 * BRICK_WIDTH,
+        11 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        2 * BRICK_WIDTH,
+        11 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        3 * BRICK_WIDTH,
+        11 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        4 * BRICK_WIDTH,
+        11 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        5 * BRICK_WIDTH,
+        11 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        6 * BRICK_WIDTH,
+        11 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        7 * BRICK_WIDTH,
+        11 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        8 * BRICK_WIDTH,
+        11 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        9 * BRICK_WIDTH,
+        11 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        10 * BRICK_WIDTH,
+        11 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
 
-      new Brick(p, 0 * BRICK_WIDTH, 12 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 1 * BRICK_WIDTH, 12 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 2 * BRICK_WIDTH, 12 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 8 * BRICK_WIDTH, 12 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 9 * BRICK_WIDTH, 12 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 10 * BRICK_WIDTH, 12 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
+      new Brick(
+        p,
+        0 * BRICK_WIDTH,
+        12 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        1 * BRICK_WIDTH,
+        12 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        2 * BRICK_WIDTH,
+        12 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        8 * BRICK_WIDTH,
+        12 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        9 * BRICK_WIDTH,
+        12 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        10 * BRICK_WIDTH,
+        12 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
 
-      new Brick(p, 0 * BRICK_WIDTH, 13 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 2 * BRICK_WIDTH, 13 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 8 * BRICK_WIDTH, 13 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 10 * BRICK_WIDTH, 13 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
+      new Brick(
+        p,
+        0 * BRICK_WIDTH,
+        13 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        2 * BRICK_WIDTH,
+        13 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        8 * BRICK_WIDTH,
+        13 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        10 * BRICK_WIDTH,
+        13 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
 
-      new Brick(p, 3 * BRICK_WIDTH, 14 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 4 * BRICK_WIDTH, 14 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 6 * BRICK_WIDTH, 14 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 7 * BRICK_WIDTH, 14 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
+      new Brick(
+        p,
+        3 * BRICK_WIDTH,
+        14 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        4 * BRICK_WIDTH,
+        14 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        6 * BRICK_WIDTH,
+        14 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        7 * BRICK_WIDTH,
+        14 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
 
-      new Brick(p, 3 * BRICK_WIDTH, 15 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 4 * BRICK_WIDTH, 15 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 6 * BRICK_WIDTH, 15 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
-      new Brick(p, 7 * BRICK_WIDTH, 15 * BRICK_HEIGHT, BRICK_WIDTH, BRICK_HEIGHT).color(Colors.ash),
+      new Brick(
+        p,
+        3 * BRICK_WIDTH,
+        15 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        4 * BRICK_WIDTH,
+        15 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        6 * BRICK_WIDTH,
+        15 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
+      new Brick(
+        p,
+        7 * BRICK_WIDTH,
+        15 * BRICK_HEIGHT,
+        BRICK_WIDTH,
+        BRICK_HEIGHT,
+      ).color(Colors.ash),
     ];
   }
 
   class Paddle {
     p: p5;
-    width: number; height: number; x: number; y: number;
-    isMovingLeft: boolean; isMovingRight: boolean;
+    width: number;
+    height: number;
+    x: number;
+    y: number;
+    isMovingLeft: boolean;
+    isMovingRight: boolean;
 
     constructor(p: p5) {
       this.p = p;
       this.width = PADDLE_WIDTH;
       this.height = PADDLE_HEIGHT;
-      this.x = p.width / 2 - (this.width / 2);
+      this.x = p.width / 2 - this.width / 2;
       this.y = p.height - this.height;
       this.isMovingLeft = false;
       this.isMovingRight = false;
 
       canv.mouseMoved((e) => {
-        this.x = uncheckedClamp(PADDLE_HEIGHT / 2, p.width - this.width - PADDLE_HEIGHT / 2, e.offsetX - (PADDLE_WIDTH / 2));
+        this.x = uncheckedClamp(
+          PADDLE_HEIGHT / 2,
+          p.width - this.width - PADDLE_HEIGHT / 2,
+          e.offsetX - PADDLE_WIDTH / 2,
+        );
         return false;
       });
       canv.touchMoved((e) => {
-        this.x = uncheckedClamp(PADDLE_HEIGHT / 2, p.width - this.width - PADDLE_HEIGHT / 2, e.offsetX - (PADDLE_WIDTH / 2));
+        this.x = uncheckedClamp(
+          PADDLE_HEIGHT / 2,
+          p.width - this.width - PADDLE_HEIGHT / 2,
+          e.offsetX - PADDLE_WIDTH / 2,
+        );
         return false;
       });
     }
@@ -263,16 +887,27 @@ export function Deparkanoid() {
     move() {
       if (this.p.keyIsDown(this.p.LEFT_ARROW) && this.x > PADDLE_HEIGHT / 2) {
         this.x -= PADDLE_SPEED;
-      } else if (this.p.keyIsDown(this.p.RIGHT_ARROW) && this.x < this.p.width - this.width - PADDLE_HEIGHT / 2) {
+      } else if (
+        this.p.keyIsDown(this.p.RIGHT_ARROW) &&
+        this.x < this.p.width - this.width - PADDLE_HEIGHT / 2
+      ) {
         this.x += PADDLE_SPEED;
       }
-      this.x = uncheckedClamp(PADDLE_HEIGHT / 2, this.p.width - this.width - PADDLE_HEIGHT / 2, this.x)
+      this.x = uncheckedClamp(
+        PADDLE_HEIGHT / 2,
+        this.p.width - this.width - PADDLE_HEIGHT / 2,
+        this.x,
+      );
     }
   }
 
   class Ball {
     p: p5;
-    radius: number; x: number; y: number; xSpeed: number; ySpeed: number;
+    radius: number;
+    x: number;
+    y: number;
+    xSpeed: number;
+    ySpeed: number;
 
     constructor(p: p5) {
       this.p = p;
@@ -294,12 +929,20 @@ export function Deparkanoid() {
     }
 
     checkEdges() {
-      if (this.x < this.radius || this.x > (this.p.width - this.radius)) {
-        this.x = uncheckedClamp(this.radius, this.p.width - this.radius, this.x);
+      if (this.x < this.radius || this.x > this.p.width - this.radius) {
+        this.x = uncheckedClamp(
+          this.radius,
+          this.p.width - this.radius,
+          this.x,
+        );
         this.xSpeed *= -1;
       }
       if (this.y < this.radius) {
-        this.y = uncheckedClamp(this.radius, this.p.height - this.radius, this.y);
+        this.y = uncheckedClamp(
+          this.radius,
+          this.p.height - this.radius,
+          this.y,
+        );
         this.ySpeed *= -1;
       }
       if (this.y > this.p.height) {
@@ -310,9 +953,11 @@ export function Deparkanoid() {
     }
 
     checkPaddle(paddle: Paddle) {
-      if (this.y + this.radius > paddle.y &&
+      if (
+        this.y + this.radius > paddle.y &&
         this.x > paddle.x &&
-        this.x < paddle.x + paddle.width) {
+        this.x < paddle.x + paddle.width
+      ) {
         this.ySpeed *= -1;
         this.y = paddle.y - this.radius;
 
@@ -322,8 +967,10 @@ export function Deparkanoid() {
 
     reset() {
       this.x = this.p.width / 2;
-      this.y = this.p.height * 5 / 9;
-      const vector = new p5.Vector(Math.random() * 2 - 1, Math.random()).normalize().mult(BALL_SPEED);
+      this.y = (this.p.height * 5) / 9;
+      const vector = new p5.Vector(Math.random() * 2 - 1, Math.random())
+        .normalize()
+        .mult(BALL_SPEED);
       this.xSpeed = vector.x;
       this.ySpeed = vector.y;
     }
@@ -332,8 +979,12 @@ export function Deparkanoid() {
       let collision = false;
       for (let i = bricks.length - 1; i >= 0; i--) {
         const brick = bricks[i];
-        if ((this.x + this.radius) > brick.x && (this.x - this.radius) < (brick.x + brick.w) &&
-          (this.y - this.radius) < (brick.y + brick.h) && (this.y + this.radius) > brick.y) {
+        if (
+          this.x + this.radius > brick.x &&
+          this.x - this.radius < brick.x + brick.w &&
+          this.y - this.radius < brick.y + brick.h &&
+          this.y + this.radius > brick.y
+        ) {
           collision ||= true;
           score += BRICK_SCORE;
           bricks.splice(i, 1);
@@ -347,7 +998,10 @@ export function Deparkanoid() {
   class Brick {
     p: p5;
     c: p5.Color | string = Colors.ash;
-    x: number; y: number; w: number; h: number;
+    x: number;
+    y: number;
+    w: number;
+    h: number;
 
     constructor(p: p5, x: number, y: number, w: number, h: number) {
       this.p = p;
@@ -382,7 +1036,11 @@ export function Deparkanoid() {
       if (bricks.length === 0) {
         this.p.text("<<YOU WIN>>", this.p.width / 2, this.p.height * (2 / 3));
       } else {
-        this.p.text("~~DEPARKANOID~~", this.p.width / 2, this.p.height * (2 / 3));
+        this.p.text(
+          "~~DEPARKANOID~~",
+          this.p.width / 2,
+          this.p.height * (2 / 3),
+        );
       }
 
       this.p.fill(Colors.cement);
@@ -393,6 +1051,5 @@ export function Deparkanoid() {
   }
 
   createEffect(() => new p5(game));
-  return (<canvas ref={el!}></canvas>);
+  return <canvas ref={el!}></canvas>;
 }
-

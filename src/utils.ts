@@ -40,7 +40,9 @@ export async function fetchWithProgress<D>(
 }
 
 export function getCSSVariable(name: string) {
-  return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  return getComputedStyle(document.documentElement)
+    .getPropertyValue(name)
+    .trim();
 }
 
 export const Colors = {

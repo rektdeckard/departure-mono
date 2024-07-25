@@ -26,11 +26,11 @@ class Timer {
       } else {
         this.stop();
       }
-    }, 1000)
+    }, 1000);
   }
 
   stop() {
-    clearInterval(this.interval)
+    clearInterval(this.interval);
     this.interval = undefined;
   }
 
@@ -48,18 +48,25 @@ export function Countdown() {
   const [remaining] = timer.signal;
 
   createEffect(() => {
-    window.addEventListener("scroll", (_e) => {
-      document.documentElement.style.setProperty(
-        "--scroll",
-        `${window.scrollY / (document.body.offsetHeight - window.innerHeight) * 100}%`,
-      );
-    }, false);
+    window.addEventListener(
+      "scroll",
+      (_e) => {
+        document.documentElement.style.setProperty(
+          "--scroll",
+          `${(window.scrollY / (document.body.offsetHeight - window.innerHeight)) * 100}%`,
+        );
+      },
+      false,
+    );
 
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        timer.start();
-      }
-    }, { threshold: 0.4 });
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          timer.start();
+        }
+      },
+      { threshold: 0.4 },
+    );
     observer.observe(countRef);
   });
 
@@ -131,7 +138,7 @@ void main() {
 
     gl_FragColor = vec4(vec3(rnd),1.0) + vec4(vec3(pattern),0.1) / 4.0;
 }
-`)
+`);
   });
 
   function reset() {
@@ -142,7 +149,9 @@ void main() {
   return (
     <div id="countdown" ref={containerRef!} onClick={reset}>
       <div class="overlay"></div>
-      <span id="count" ref={countRef!}>{remaining()}</span>
+      <span id="count" ref={countRef!}>
+        {remaining()}
+      </span>
       <canvas ref={canvasRef!} />
     </div>
   );

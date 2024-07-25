@@ -1,4 +1,4 @@
-import { Index, Show, splitProps } from "solid-js"
+import { Index, Show, splitProps } from "solid-js";
 import { Portal } from "solid-js/web";
 import { Select as ArkSelect, type SelectRootProps } from "@ark-ui/solid";
 import "./select.css";
@@ -43,5 +43,5 @@ export function Select<T>(props: SelectProps<T>) {
       </Portal>
       <ArkSelect.HiddenSelect />
     </ArkSelect.Root>
-  )
+  );
 }

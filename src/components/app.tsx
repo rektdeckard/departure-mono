@@ -25,6 +25,5 @@ export function App() {
         </section>
       </main>
     </>
-  )
+  );
 }
-

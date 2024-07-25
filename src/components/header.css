@@ -3,13 +3,13 @@ header {
   padding: 44px;
 }
 
-h1 { 
+h1 {
   font-size: 7rem;
   margin: 260px 0 66px;
 }
 
 h2 {
-  font-size: 2rem; 
+  font-size: 2rem;
 }
 
 a {
@@ -47,7 +47,7 @@ sup {
 #departures {
   position: relative;
   left: -290px;
-  font-size:44px;
+  font-size: 44px;
   margin: 114px 0 156px;
 }
 
@@ -61,5 +61,5 @@ sup {
 }
 
 #departures .blink {
-  animation: 500ms steps(2)  alternate infinite bloop;
+  animation: 500ms steps(2) alternate infinite bloop;
 }

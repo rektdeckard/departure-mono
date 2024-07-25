@@ -1,8 +1,11 @@
-[data-scope="select"][data-part="root"] {}
+[data-scope="select"][data-part="root"] {
+}
 
-[data-scope="select"][data-part="root"][data-invalid] {}
+[data-scope="select"][data-part="root"][data-invalid] {
+}
 
-[data-scope="select"][data-part="root"][data-readonly] {}
+[data-scope="select"][data-part="root"][data-readonly] {
+}
 
 [data-scope="select"][data-part="trigger"] {
   display: flex;
@@ -27,9 +30,11 @@
   padding: 0.5rem;
 }
 
-[data-scope="select"][data-part="content"][data-state="open"] {}
+[data-scope="select"][data-part="content"][data-state="open"] {
+}
 
-[data-scope="select"][data-part="content"][data-state="closed"] {}
+[data-scope="select"][data-part="content"][data-state="closed"] {
+}
 
 [data-scope="select"][data-part="item"] {
   display: grid;
@@ -43,6 +48,8 @@
   background-color: var(--accent);
 }
 
-[data-scope="select"][data-part="item"][data-state="checked"] {}
+[data-scope="select"][data-part="item"][data-state="checked"] {
+}
 
-[data-scope="select"][data-part="item-indicator"][data-state="unchecked"] {}
+[data-scope="select"][data-part="item-indicator"][data-state="unchecked"] {
+}
