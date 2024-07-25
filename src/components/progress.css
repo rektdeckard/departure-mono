@@ -1,0 +1,17 @@
+[data-scope="progress"][data-part="root"] {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+[data-scope="progress"][data-part="track"] {
+  height: 0.8rem;
+  background-color: var(--fg);
+}
+
+[data-scope="progress"][data-part="range"] {
+  height: 100%;
+  background-color: var(--accent);
+  transition: width 150ms ease;
+}
+

@@ -1,0 +1,128 @@
+@font-face {
+  font-family: "Departure Mono";
+  src:
+    local("Departure Mono"),
+    url("dm.woff2") format("woff2"),
+    url("dm.woff") format("woff"),
+    url("dm.otf") format("opentype");
+}
+
+:root {
+  font-family: "Departure Mono", monospace;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  color-scheme: light dark;
+
+  font-size: 14px;
+  --unit: 1em;
+  --scroll: 0%;
+  --flick: cubic-bezier(.36,2.09,.07,-1.52);
+
+  --amber: #FFA43A;
+  --pumpkin: #FF9548;
+  --flux: #C8BE50;
+  --foam: #CAD5AA;
+  --enamel: #F2F2F2;
+  --cement: #C0C0C0;
+  --ash: #BBBBBB;
+  --clay: #70705C;
+  --smoke: #666666;
+  --carbon: #222222;
+  --black: #141414;
+
+  --accent: var(--amber);
+  --fg: var(--smoke);
+  --bg: var(--enamel);
+
+  color: var(--fg);
+  background-color: var(--bg);
+  /* color: hsl(30 1% min(88%, var(--scroll) * 8)); */
+  /* background-color: hsl(30 1% calc(100% -  min(88%, var(--scroll) * 8))); */
+}
+
+@media (prefers-color-scheme: dark) {}
+
+body {
+  overflow-x: hidden;
+}
+
+::selection {
+  color: var(--carbon);
+  background-color: var(--accent);
+}
+
+menu {
+  position: fixed;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  font-size: 1.2rem;
+  top: 44px;
+  right: 44px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  --fg: var(--cement);
+  --bg: var(--carbon);
+
+  color: var(--fg);
+  background-color: var(--bg);
+
+}
+
+section, footer { 
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+}
+
+.inverse {
+  color: var(--bg);
+  background-color: var(--fg);
+
+  ::selection {
+    color: var(--cement);
+    background-color: var(--clay);
+  }
+}
+
+.maxwidth {
+  max-width: 1440px;
+  padding-inline: 44px;
+  margin: 0 auto;
+}
+
+.comment {
+  width: 212px;
+  color: var(--clay);
+  font-size: 11px;
+  line-height: 14px;
+}
+
+.control {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1;
+}
+
+.diagram {
+  color: var(--clay);
+}
+
+.lg {
+  font-size: 1.4rem;
+}
+
+.accent {
+  color: var(--accent);
+}
+

@@ -1,0 +1,196 @@
+#tester {
+  position: relative;
+  width: 100%;
+  padding-top: 160px;
+  cursor: cell;
+}
+
+#apollo1 {
+  position: absolute;
+  transform: rotate(90deg);
+  top: 120px;
+  left: -391px;
+  user-select: none;
+}
+
+#apollo2 {
+  position: absolute;
+  top: 1920px;
+  left: -291px;
+  user-select: none;
+}
+
+.split {
+  display: grid;
+  grid-template-columns: 668px 1fr;
+  gap: 130px;
+  position: relative;
+}
+
+#glyph-specimen {
+  --notch: 48px;
+  position: sticky;
+  top: 44px;
+  display: grid;
+  grid-template-rows: 232px 96px 288px 96px 1fr;
+
+  color: var(--carbon);
+  width: 668px;
+  height: 848px;
+  clip-path: polygon(
+    0 0,
+    calc(100% - var(--notch)) 0,
+    100% var(--notch),
+    100% 100%,
+    0 100%,
+    0 0
+  );
+
+  /* --e: 1px; */
+  /* --w: 48px; */
+  /* background:
+    linear-gradient(
+      0deg,
+      transparent var(--e),
+      var(--cement) var(--e),
+      var(--cement) calc(var(--w) - var(--e) - 1px),
+      transparent calc(var(--w) - var(--e) - 1px),
+      transparent var(--w)
+    ),
+    linear-gradient(
+      90deg,
+      transparent var(--e),
+      var(--cement) var(--e),
+      var(--cement) calc(var(--w) - var(--e) - 1px),
+      transparent calc(var(--w) - var(--e) - 1px),
+      transparent var(--w)
+    ),
+    linear-gradient(
+      0deg,
+      transparent calc(var(--w) - 1px),
+      currentColor calc(var(--w) - 1px),
+      transparent var(--w)
+    ),
+    linear-gradient(
+      90deg,
+      transparent calc(var(--w) - 1px),
+      currentColor calc(var(--w) - 1px),
+      transparent var(--w)
+    ); */
+  /*   background-size: var(--w) var(--w); */
+  /*   background-position: 22px 39.5px; */
+  background-color: var(--cement);
+}
+
+#glyph-specimen::before {
+  position: absolute;
+  content: "";
+  width: 6px;
+  height: 22px;
+  border-radius: 2px;
+  top: 165px;
+  left: 22px;
+  background-color: currentColor;
+}
+
+#glyph-specimen::after {
+  position: absolute;
+  content: "";
+  width: 6px;
+  height: 22px;
+  border-radius: 2px;
+  bottom: 165px;
+  left: 22px;
+  background-color: currentColor;
+}
+
+#big {
+  position: absolute;
+  top: 88px;
+  left: 166px;
+  font-size: 528px;
+}
+
+.anatomy {
+  border-top: 1px solid;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 6px 22px;
+}
+
+.specimen-details {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 94px 22px 0;
+}
+
+.specimen-name {
+  text-wrap: balance;
+}
+
+#glyph-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.segment-header {
+  color: var(--clay);
+  font-size: 11px;
+  margin: 0 auto 10px 16px;
+  padding-top: 66px;
+  width: 100%;
+}
+
+.glyph-item {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  font-size: 44px;
+  padding: 0.4rem;
+
+  --b: 2px;   /* thickness of the border */
+  --c: var(--accent);   /* color of the border */
+  --w: 12px;  /* width of border */
+
+  border: var(--b) solid transparent;
+}
+
+.glyph-item:hover {
+  border: var(--b) solid #0000; /* space for the border */
+  --_g: #0000 90deg,var(--c) 0;
+  --_p: var(--w) var(--w) border-box no-repeat;
+  background:
+    conic-gradient(from 90deg  at top    var(--b) left  var(--b),var(--_g)) 0    0    / var(--_p),
+    conic-gradient(from 180deg at top    var(--b) right var(--b),var(--_g)) 100% 0    / var(--_p),
+    conic-gradient(from 0deg   at bottom var(--b) left  var(--b),var(--_g)) 0    100% / var(--_p),
+    conic-gradient(from -90deg at bottom var(--b) right var(--b),var(--_g)) 100% 100% / var(--_p);
+}
+
+.glyph-item .glyph-example {
+  width: 1ch;
+  padding: 5px;
+  background-color: transparent;
+  transition: background-color 150ms var(--flick);
+}
+
+.glyph-item[data-selected="true"] .glyph-example {
+  color: var(--carbon);
+  background-color: var(--accent);
+}
+
+.glyph-item[data-selected="true"] .glyph-detail {
+  color: var(--accent);
+}
+
+.glyph-example {
+  flex: 1;
+}
+
+.glyph-detail {
+  display: block;
+  font-size: 1rem;
+}
+

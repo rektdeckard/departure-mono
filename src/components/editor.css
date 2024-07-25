@@ -1,0 +1,9 @@
+.editor {
+  position: relative;
+  width: 100%;
+  max-width: 824px;
+}
+
+.cm-editor .cm-content {
+	font-family: "Departure Mono"
+}

@@ -1,0 +1,23 @@
+#diagram1 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 114px;
+  padding-top: 198px;
+  padding-bottom: 28px;
+}
+
+#diagram1 .comment {
+  position: absolute;
+  top: 132px;
+  left: 228px;
+}
+
+#proto {
+  margin-top: 60px;
+  font-size: 11px;
+}
+
+#keeb {
+  font-size: 16.5px;
+}

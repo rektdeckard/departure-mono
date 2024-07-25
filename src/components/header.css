@@ -1,0 +1,65 @@
+header {
+  position: relative;
+  padding: 44px;
+}
+
+h1 { 
+  font-size: 7rem;
+  margin: 260px 0 66px;
+}
+
+h2 {
+  font-size: 2rem; 
+}
+
+a {
+  color: currentColor;
+  transition: color 150ms var(--flick);
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+menu > a {
+  line-height: 2;
+  text-decoration: none;
+}
+
+sup {
+  font-size: 0.6em;
+  vertical-align: top;
+  margin-left: -0.6em;
+}
+
+#title {
+  width: 568px;
+  line-height: 1.1;
+}
+
+#version {
+  font-size: 1.6rem;
+  line-height: 6rem;
+  vertical-align: top;
+  margin-left: 0.5em;
+}
+
+#departures {
+  position: relative;
+  left: -290px;
+  font-size:44px;
+  margin: 114px 0 156px;
+}
+
+@keyframes bloop {
+  from {
+    background-color: transparent;
+  }
+  to {
+    background-color: var(--foam);
+  }
+}
+
+#departures .blink {
+  animation: 500ms steps(2)  alternate infinite bloop;
+}

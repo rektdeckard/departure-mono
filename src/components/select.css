@@ -1,0 +1,48 @@
+[data-scope="select"][data-part="root"] {}
+
+[data-scope="select"][data-part="root"][data-invalid] {}
+
+[data-scope="select"][data-part="root"][data-readonly] {}
+
+[data-scope="select"][data-part="trigger"] {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-width: 128px;
+  height: 24px;
+  background: var(--bg);
+  border: 1px solid var(--fg);
+  font-family: inherit;
+}
+
+[data-scope="select"][data-part="trigger"]:hover {
+  color: var(--bg);
+  background-color: var(--accent);
+}
+
+[data-scope="select"][data-part="content"] {
+  background: var(--bg);
+  border: 1px solid var(--fg);
+  padding: 0.5rem;
+}
+
+[data-scope="select"][data-part="content"][data-state="open"] {}
+
+[data-scope="select"][data-part="content"][data-state="closed"] {}
+
+[data-scope="select"][data-part="item"] {
+  display: grid;
+  grid-template-columns: 0.7rem 1fr;
+  gap: 0.5rem;
+  padding: 0.2rem;
+}
+
+[data-scope="select"][data-part="item"]:hover {
+  color: var(--bg);
+  background-color: var(--accent);
+}
+
+[data-scope="select"][data-part="item"][data-state="checked"] {}
+
+[data-scope="select"][data-part="item-indicator"][data-state="unchecked"] {}
