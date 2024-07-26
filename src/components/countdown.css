@@ -1,7 +1,7 @@
 #countdown {
   position: relative;
   height: 896px;
-  background-image: url("pad.jpg");
+  background-image: url("/assets/pad.jpg");
   background-size: cover;
   background-position: center;
   background-size: calc(100% + var(--scroll) * 3);

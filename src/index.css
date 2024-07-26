@@ -1,10 +1,9 @@
 @font-face {
   font-family: "Departure Mono";
   src:
-    local("Departure Mono"),
-    url("dm.woff2") format("woff2"),
-    url("dm.woff") format("woff"),
-    url("dm.otf") format("opentype");
+    url("/assets/dm.woff2") format("woff2"),
+    url("/assets/dm.woff") format("woff"),
+    url("/assets/dm.otf") format("opentype");
 }
 
 :root {

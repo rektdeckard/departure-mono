@@ -7,7 +7,7 @@ export function Header() {
   return (
     <header class="maxwidth">
       <menu>
-        <a href="dm.zip" download>
+        <a href="/assets/dm.zip" download>
           █ DOWNLOAD <sup>532KB</sup>
         </a>
         <a href="https://buymeacoffee.com/phosphoricons">█ DONATE</a>
