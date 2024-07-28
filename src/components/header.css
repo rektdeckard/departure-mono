@@ -1,11 +1,12 @@
 header {
   position: relative;
-  padding: 44px;
+  padding: 120px 44px 0;
 }
 
-h1 {
-  font-size: 7rem;
-  margin: 260px 0 66px;
+.headline {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 11px;
 }
 
 h2 {
@@ -21,8 +22,16 @@ a:hover {
   color: var(--accent);
 }
 
+menu {
+  position: absolute;
+  top: 158px;
+  right: 140px;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
 menu > a {
-  line-height: 2;
   text-decoration: none;
 }
 
@@ -33,22 +42,21 @@ sup {
 }
 
 #title {
-  width: 568px;
+  font-size: 88px;
   line-height: 1.1;
+  color: var(--carbon);
+  background-color: var(--cement);
 }
 
 #version {
-  font-size: 1.6rem;
-  line-height: 6rem;
-  vertical-align: top;
-  margin-left: 0.5em;
+  font-size: 11px;
 }
 
 #departures {
   position: relative;
   left: -290px;
   font-size: 44px;
-  margin: 114px 0 156px;
+  margin: 0 0 132px;
 }
 
 @keyframes bloop {
@@ -62,4 +70,96 @@ sup {
 
 #departures .blink {
   animation: 500ms steps(2) alternate infinite bloop;
+}
+
+#letter {
+  position: relative;
+  display: grid;
+  grid-template-columns: 155px 1fr;
+  gap: 187px;
+  margin: 185px 0 413px 114px;
+}
+
+#letter .comment {
+  width: 155px;
+}
+
+#brief {
+  z-index: 1;
+}
+
+#badge {
+  position: absolute;
+  top: 258px;
+  left: -250px;
+  transition: transform 200ms ease;
+}
+
+#badge:hover {
+  transform: scale(1.1) translate(120px, -12px) rotate(3deg);
+}
+
+#highlighter {
+  position: absolute;
+  top: 708px;
+  left: 208px;
+}
+
+#planet {
+  position: absolute;
+  top: 152px;
+  left: -164px;
+}
+
+#ephemera {
+  position: relative;
+  height: 855px;
+}
+
+#ephemera .comment {
+  width: 177px;
+}
+
+#boarding-pass {
+  position: absolute;
+  left: 342px;
+  top: 66px;
+  transition: transform 200ms ease;
+}
+
+#receipt {
+  position: absolute;
+  top: 150px;
+  left: 114px;
+  transition: transform 200ms ease;
+}
+
+#bag-tag {
+  position: absolute;
+  top: 334px;
+  left: 1026px;
+  transition: transform 200ms ease;
+}
+
+#ephemera:hover {
+  #boarding-pass {
+    transform: scale(1.05) rotate(2deg) translate(120px, 14px);
+  }
+
+  #receipt {
+    transform: scale(1.05) rotate(-3deg) translate(-96px, 12px);
+  }
+
+  #bag-tag {
+    transform: scale(1.05) rotate(4deg) translate(160px, 120px);
+  }
+}
+
+
+#announce {
+  position: relative;
+  left: -170px;
+  width: 1065px;
+  font-size: 88px;
+  line-height: 1;
 }

@@ -1,0 +1,23 @@
+#fuzz {
+  position: fixed;
+  display: grid;
+  place-items: center;
+  inset: 0;
+  opacity: var(--fuzz);
+  pointer-events: none;
+  z-index: 1;
+}
+
+#fuzz > canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+}
+
+#count {
+  font-size: 440px;
+  color: var(--flux);
+  z-index: 1;
+}

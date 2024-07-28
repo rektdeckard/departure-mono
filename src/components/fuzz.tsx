@@ -1,9 +1,10 @@
+
 import { createEffect } from "solid-js";
 import GlslCanvas from "glslCanvas";
 import { Timer } from "../utils";
-import "./countdown.css";
+import "./fuzz.css";
 
-export function Countdown() {
+export function Fuzz() {
   let containerRef: HTMLDivElement;
   let countRef: HTMLSpanElement;
   let canvasRef: HTMLCanvasElement;
@@ -11,17 +12,6 @@ export function Countdown() {
   const [remaining] = timer.signal;
 
   createEffect(() => {
-    window.addEventListener(
-      "scroll",
-      (_e) => {
-        document.documentElement.style.setProperty(
-          "--scroll",
-          `${(window.scrollY / (document.body.offsetHeight - window.innerHeight)) * 100}%`,
-        );
-      },
-      false,
-    );
-
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -110,8 +100,7 @@ void main() {
   }
 
   return (
-    <div id="countdown" ref={containerRef!} onClick={reset}>
-      <div class="overlay"></div>
+    <div id="fuzz" ref={containerRef!} onClick={reset}>
       <span id="count" ref={countRef!}>
         {remaining()}
       </span>

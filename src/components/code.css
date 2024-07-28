@@ -1,0 +1,16 @@
+#mission-report {
+  position: relative;
+  margin-top: 1300px;
+}
+
+#code-rust {
+  position: absolute;
+}
+
+#code-js {
+  position: absolute;
+}
+
+#code-sql {
+  position: absolute;
+}

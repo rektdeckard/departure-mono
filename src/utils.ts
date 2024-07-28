@@ -1,9 +1,48 @@
+import { createSignal, type Signal } from "solid-js";
+
 export type FetchWithProgressOptions<D> = {
   method?: string;
   responseType?: XMLHttpRequestResponseType;
   onProgress?: (pct: number) => void;
   onDone?: (res: D) => void;
 };
+
+export class Timer {
+  seconds: number;
+  signal: Signal<number>;
+  interval: number | undefined;
+
+  constructor(seconds: number) {
+    this.seconds = seconds;
+    this.signal = createSignal(seconds);
+  }
+
+  decrement() {
+    this.signal[1]((s) => s - 1);
+  }
+
+  start() {
+    if (this.interval) return;
+    this.interval = setInterval(() => {
+      const [s] = this.signal;
+      if (s() > 0) {
+        this.decrement();
+      } else {
+        this.stop();
+      }
+    }, 1000);
+  }
+
+  stop() {
+    clearInterval(this.interval);
+    this.interval = undefined;
+  }
+
+  reset() {
+    stop();
+    this.signal[1](this.seconds);
+  }
+}
 
 export async function fetchWithProgress<D>(
   url: string,

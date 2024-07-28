@@ -149,7 +149,7 @@
   gap: 1rem;
   align-items: center;
   font-size: 44px;
-  padding: 0.4rem;
+  padding: 2px;
 
   --b: 2px; /* thickness of the border */
   --c: var(--accent); /* color of the border */
@@ -175,7 +175,7 @@
 
 .glyph-item .glyph-example {
   width: 1ch;
-  padding: 5px;
+  padding: 4px;
   background-color: transparent;
   transition: background-color 150ms var(--flick);
 }

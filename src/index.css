@@ -18,6 +18,7 @@
   font-size: 14px;
   --unit: 1em;
   --scroll: 0%;
+  --fuzz: 0;
   --flick: cubic-bezier(0.36, 2.09, 0.07, -1.52);
 
   --amber: #ffa43a;
@@ -54,21 +55,11 @@ body {
   background-color: var(--accent);
 }
 
-menu {
-  position: fixed;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  font-size: 1.2rem;
-  top: 44px;
-  right: 44px;
-}
-
 main {
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  padding-top: 1000px;
 
   --fg: var(--cement);
   --bg: var(--carbon);
@@ -101,7 +92,6 @@ footer {
 }
 
 .comment {
-  width: 212px;
   color: var(--clay);
   font-size: 11px;
   line-height: 14px;

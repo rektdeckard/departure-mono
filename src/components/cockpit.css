@@ -1,0 +1,17 @@
+#transition {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 1800px;
+}
+
+#cockpit {
+  position: sticky;
+  top: 15vh;
+  margin: 120px 0;
+}
+
+#cockpit foreignObject {
+  line-height: 1.1;
+}

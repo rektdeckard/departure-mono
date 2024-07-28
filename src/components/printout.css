@@ -1,0 +1,7 @@
+.printout {
+  color: var(--carbon);
+}
+
+.printout > foreignObject > * {
+  padding: 88px 44px 0;
+}

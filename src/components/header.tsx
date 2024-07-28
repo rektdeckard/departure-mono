@@ -6,22 +6,27 @@ const [MAJOR, MINOR] = version.split(".");
 export function Header() {
   return (
     <header class="maxwidth">
-      <menu>
-        <a href="/assets/dm.zip" download>
-          █ DOWNLOAD <sup>532KB</sup>
-        </a>
-        <a href="https://buymeacoffee.com/phosphoricons">█ DONATE</a>
-      </menu>
-      <h1 id="title">
-        Departure Mono
+      <div class="headline">
+        <h1 id="title">
+          DEPARTURE MONO
+        </h1>
         <span id="version">
           v{MAJOR}.{MINOR}
         </span>
-      </h1>
-      <p class="comment">
-        DEPARTURE MONO IS A MONOSPACED PIXEL FONT BY{" "}
-        <a href="https://helenazhang.com">HELENA ZHANG</a>.
-      </p>
+      </div>
+      <menu>
+        <a href="/assets/dm.zip" download>
+          ►► DOWNLOAD <sup>532KB</sup>
+        </a>
+        <a href="https://buymeacoffee.com/phosphoricons">►► DONATE</a>
+      </menu>
+      <div id="letter">
+        <img id="planet" src="/assets/planet.svg" />
+        <p class="comment">WHEN YOU’RE GOING FOR A RETRO TECHNICAL VIBE</p>
+        <img id="brief" src="/assets/brief.svg" />
+        <img id="badge" src="/assets/badge.svg" />
+        <img id="highlighter" src="/assets/highlighter-outline.svg" />
+      </div>
       <pre id="departures">
         {`│ Flight  │ Destination ↑           │ Departing  │ Gate  │ Status       │`}
         <br />
@@ -40,6 +45,15 @@ export function Header() {
         <br />
         {`│ QF678   │ LHR (London)            │ 20:00      │ 17    │ On Time      │`}
       </pre>
+      <div id="ephemera">
+        <p class="comment">OR WHEN YOU’RE WORKING WITH TABULAR DATA</p>
+        <img id="boarding-pass" src="/assets/boarding-pass.svg" />
+        <img id="receipt" src="/assets/receipt.svg" />
+        <img id="bag-tag" src="/assets/bag-tag.svg" />
+      </div>
+      <p id="announce">
+        QUIET IN THE CABIN FLIGHT ATTENDANTS PREPARE FOR TAKEOFF
+      </p>
     </header>
   );
 }
