@@ -102,9 +102,6 @@ export function Tester() {
       <pre id="apollo1" class="diagram">
         {apollo}
       </pre>
-      <pre id="apollo2" class="diagram">
-        {apollo}
-      </pre>
       <div class="split">
         <div id="glyph-specimen">
           <div class="specimen-details">
@@ -225,7 +222,7 @@ function GlyphItem(props: GlyphItemProps) {
   );
 }
 
-const apollo = `\
+export const apollo = `\
    ┌──────────────────┐            ┌──────────────────┐         ┌──────────────────┐                                 
    │      CLOCK       │            │     COUNTER &    │         │         S        │                                 
    ├──────────────────┤     ┌─────►│     INTERRUPT    ├────────►│        ───       │                                 

@@ -13,5 +13,5 @@ export function Sensor() {
     // });
   });
 
-  return (<span class="sensor">{val().toString().padStart(2, "0")}</span>);
+  return (<span id="sensor">{val().toString().padStart(2, "0")}</span>);
 }

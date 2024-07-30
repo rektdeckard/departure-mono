@@ -1,6 +1,6 @@
 #tester {
   position: relative;
-  width: 100%;
+  flex: 1;
   padding-top: 160px;
   cursor: cell;
 }
@@ -13,18 +13,18 @@
   user-select: none;
 }
 
-#apollo2 {
-  position: absolute;
-  top: 1920px;
-  left: -291px;
-  user-select: none;
-}
-
 .split {
   display: grid;
-  grid-template-columns: 668px 1fr;
-  gap: 130px;
+  grid-template-columns: 6fr 5fr;
+  gap: 8.33%;
   position: relative;
+}
+
+@media screen and (max-width: 1115px) {
+  .split {
+    grid-template-columns: 378px 1fr;
+    gap: 55px;
+  }
 }
 
 #glyph-specimen {
@@ -35,8 +35,11 @@
   grid-template-rows: 232px 96px 288px 96px 1fr;
 
   color: var(--carbon);
-  width: 668px;
+  font-size: 11px;
+  width: 100%;
+  min-width: 500px;
   height: 848px;
+  z-index: 1;
   clip-path: polygon(
     0 0,
     calc(100% - var(--notch)) 0,
@@ -107,7 +110,7 @@
 #big {
   position: absolute;
   top: 88px;
-  left: 166px;
+  left: calc(50% - 168px);
   font-size: 528px;
 }
 
@@ -133,6 +136,7 @@
 #glyph-list {
   display: flex;
   flex-wrap: wrap;
+  gap: 1ch;
 }
 
 .segment-header {
@@ -197,3 +201,35 @@
   display: block;
   font-size: 1rem;
 }
+
+@media screen and (max-width: 1115px) {
+  #glyph-specimen  {
+    min-width: unset;
+    width: 378px;
+    height: 580px;
+    grid-template-rows: 188px 48px 144px 48px 1fr;
+  }
+
+  #glyph-specimen::before {
+    top:88px;
+  }
+
+  #glyph-specimen::after {
+    bottom: 88px;
+  }
+
+  #big {
+    font-size: 264px;
+    top: 116px;
+    left: 104.5px;
+  }
+
+  .specimen-details {
+    padding: 50px 22px 0;
+  }
+
+  .glyph-item {
+    font-size: 33px;
+  }
+}
+

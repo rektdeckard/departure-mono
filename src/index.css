@@ -15,10 +15,11 @@
 
   color-scheme: light dark;
 
-  font-size: 14px;
+  font-size: 11px;
   --unit: 1em;
-  --scroll: 0%;
-  --fuzz: 0;
+  /* --scroll: 0%; */
+  /* --fuzz: 0; */
+  --t: 0%;
   --flick: cubic-bezier(0.36, 2.09, 0.07, -1.52);
 
   --amber: #ffa43a;
@@ -59,7 +60,6 @@ main {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  padding-top: 1000px;
 
   --fg: var(--cement);
   --bg: var(--carbon);
@@ -68,11 +68,33 @@ main {
   background-color: var(--bg);
 }
 
-section,
-footer {
+section {
   display: grid;
   place-items: center;
   padding: 2rem;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 44px;
+  background-color: var(--carbon);
+}
+
+h2 {
+  font-size: 44px;
+  line-height: 1.1;
+  color: var(--carbon);
+  background-color: var(--cement);
+}
+
+.callout {
+  color: var(--clay);
+  border-left: 8px solid var(--clay);
+  padding-left: 13px;
+  font-size: 11px;
+  line-height: 14px;
 }
 
 .inverse {

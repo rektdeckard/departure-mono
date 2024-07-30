@@ -33,6 +33,8 @@ menu {
 
 menu > a {
   text-decoration: none;
+  font-size: 16.5px;
+  line-height: 21px;
 }
 
 sup {

@@ -15,7 +15,7 @@ export function Header() {
         </span>
       </div>
       <menu>
-        <a href="/assets/dm.zip" download>
+        <a href="/" download>
           ►► DOWNLOAD <sup>532KB</sup>
         </a>
         <a href="https://buymeacoffee.com/phosphoricons">►► DONATE</a>

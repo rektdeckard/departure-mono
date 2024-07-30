@@ -4,14 +4,25 @@
   flex-direction: column;
   align-items: center;
   height: 1800px;
+  transition: color 400ms ease, background-color 400ms ease;
+  --back: color-mix(in lch, var(--enamel), var(--carbon) var(--t));
+  background-color: var(--back);
+  color: color-mix(in lch, var(--smoke), var(--amber) var(--t));
 }
 
 #cockpit {
   position: sticky;
-  top: 15vh;
+  top: 10vh;
+  height: 75vh;
   margin: 120px 0;
+  font-size: 14px;
 }
 
 #cockpit foreignObject {
   line-height: 1.1;
+}
+
+#tend {
+  position: absolute;
+  bottom: 200px;
 }

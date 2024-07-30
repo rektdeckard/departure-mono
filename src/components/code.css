@@ -1,16 +1,59 @@
+#code {
+  position: relative;
+  width: 100%;
+}
+
+#code .comment {
+  position: absolute;
+  top: 1126px;
+  left: 798px;
+  width: 228px;
+}
+
+#apollo2 {
+  position: absolute;
+  top: -28px;
+  left: -364px;
+  user-select: none;
+}
+
+#flow {
+  position: absolute;
+  left: -259px;
+  top: 267px;
+}
+
+#sensor {
+  position: absolute;
+  top: 330px;
+  left: 342px;
+  color: var(--accent);
+  font-size: 220px;
+}
+
 #mission-report {
   position: relative;
   margin-top: 1300px;
+  left: 342px;
+   /* caret-color: #ff7a18; */
+  /* caret-shape: underscore; */
+  caret: yellow block;
 }
 
 #code-rust {
   position: absolute;
+  top: 198px;
+  left: 798px;
 }
 
 #code-js {
   position: absolute;
+  top: 673px;
+  left: -40px;
 }
 
 #code-sql {
   position: absolute;
+  top: 1576px;
+  left: 44px;
 }

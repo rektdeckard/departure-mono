@@ -1,0 +1,11 @@
+#deparkanoid {
+  position: relative;
+  margin: 130px 0 100px;
+}
+
+#deparkanoid .comment {
+  position: absolute;
+  bottom: -40px;
+  left: 180px;
+  width: 225px;
+}

@@ -3,6 +3,7 @@ import p5 from "p5";
 import { uncheckedClamp } from "Kdim";
 
 import { Colors } from "../utils";
+import "./deparkanoid.css";
 
 const BALL_SIZE = 22;
 const BALL_SPEED = 12;
@@ -1051,5 +1052,10 @@ export function Deparkanoid() {
   }
 
   createEffect(() => new p5(game));
-  return <canvas ref={el!}></canvas>;
+  return (
+    <section id="deparkanoid">
+      <canvas ref={el!}></canvas>
+      <p class="comment">AND OF COURSE, PERFECT FOR YOUR 8-BIT VIDEO GAME OR ASCII ART</p>
+    </section>
+  );
 }
