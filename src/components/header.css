@@ -1,6 +1,7 @@
 header {
   position: relative;
   padding: 120px 44px 0;
+  background-color: var(--bg);
 }
 
 .headline {
@@ -59,6 +60,7 @@ sup {
   left: -290px;
   font-size: 44px;
   margin: 0 0 132px;
+  color: var(--dark);
 }
 
 @keyframes bloop {
@@ -87,7 +89,14 @@ sup {
 }
 
 #brief {
+  font-size: 16.5px;
   z-index: 1;
+}
+
+#brief pre {
+ position: relative;
+ top: -82px;
+ padding: 88px 66px 0;
 }
 
 #badge {
@@ -164,4 +173,8 @@ sup {
   width: 1065px;
   font-size: 88px;
   line-height: 1;
+}
+
+.highlight {
+  background-color: var(--foam);
 }

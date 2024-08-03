@@ -97,6 +97,7 @@ export const Colors = {
   ash: getCSSVariable("--ash"),
   clay: getCSSVariable("--clay"),
   smoke: getCSSVariable("--smoke"),
+  dark: getCSSVariable("--dark"),
   carbon: getCSSVariable("--carbon"),
   black: getCSSVariable("--black"),
 } as const;

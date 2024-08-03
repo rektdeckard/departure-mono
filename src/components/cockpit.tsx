@@ -86,7 +86,7 @@ export function Cockpit() {
   };
 
   return (
-    <section id="transition">
+    <section id="transition" tabindex={0}>
       <svg
         id="cockpit"
         width="1224"
@@ -134,43 +134,16 @@ export function Cockpit() {
           <rect x="553" y="418" width="96" height="16" fill="currentColor" />
           <path d="M556.738 423H558.238V426H562.738V423H564.238V432H562.738V427.5H558.238V432H556.738V423ZM559.738 420H561.238V421.5H559.738V420ZM558.238 421.5H559.738V423H558.238V421.5ZM561.238 421.5H562.738V423H561.238V421.5ZM583.744 420H585.244V430.5H583.744V420ZM585.244 430.5H589.744V432H585.244V430.5ZM589.744 420H591.244V430.5H589.744V420ZM610.75 420H618.25V421.5H615.25V432H613.75V421.5H610.75V420ZM637.756 421.5H639.256V430.5H637.756V421.5ZM639.256 430.5H643.756V432H639.256V430.5ZM643.756 421.5H645.256V430.5H643.756V421.5ZM639.256 420H643.756V421.5H639.256V420Z" fill="var(--back)" />
           <g clip-path="url(#clip_radar)">
-            {/* <rect
-              x="664"
-              y="362"
-              style={`transition: transform 500ms ease-out; transform: translate(${c().x}px, ${c().y}px)`}
-              width="6"
-              height="6"
-              fill="currentColor"
-            />
-            <rect
-              x="526.5"
-              y="187"
-              style={`transition: transform 500ms ease-out; transform: translate(${a().x}px, ${a().y}px)`}
-              width="11"
-              height="11"
-              fill="currentColor"
-            />
-            <rect
-              x="504"
-              y="243"
-              style={`transition: transform 500ms ease-out; transform: translate(${b().x}px, ${b().y}px)`}
-              width="6"
-              height="6"
-              fill="currentColor"
-            /> */}
             <For each={particles()}>
               {(p) => (
-                <>
-                  <rect
-                    x={CENTER.x}
-                    y={CENTER.y}
-                    style={`transition: transform 500ms ease-out; transform: translate(${p.x}px, ${p.y}px)`}
-                    width={p.size}
-                    height={p.size}
-                    fill="currentColor"
-                  />
-                  {/* <line x1={p.x + CENTER.x + p.size / 2} y1={p.y + CENTER.y + p.size / 2} x2={CENTER.x} y2={CENTER.y} stroke="currentColor" stroke-width="2" style="opacity: 0.4" /> */}
-                </>
+                <rect
+                  x={CENTER.x}
+                  y={CENTER.y}
+                  style={`transition: transform 500ms ease-out; transform: translate(${p.x}px, ${p.y}px)`}
+                  width={p.size}
+                  height={p.size}
+                  fill="currentColor"
+                />
               )}
             </For>
           </g>

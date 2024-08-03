@@ -29,6 +29,7 @@
     "@codemirror/view": "^6.28.6",
     "@lezer/highlight": "^1.2.0",
     "codemirror": "^6.0.1",
+    "cva": "npm:class-variance-authority@^0.7.0",
     "fonteditor-core": "^2.4.1",
     "glslCanvas": "^0.2.6",
     "kdim": "^0.6.6",

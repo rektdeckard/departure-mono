@@ -15,8 +15,8 @@
 
 .split {
   display: grid;
-  grid-template-columns: 6fr 5fr;
-  gap: 8.33%;
+  grid-template-columns: 600px 1fr;
+  gap: 88px;
   position: relative;
 }
 
@@ -32,13 +32,13 @@
   position: sticky;
   top: 44px;
   display: grid;
-  grid-template-rows: 232px 96px 288px 96px 1fr;
+  grid-template-rows: 237px 80px 240px 80px 1fr;
 
   color: var(--carbon);
   font-size: 11px;
   width: 100%;
   min-width: 500px;
-  height: 848px;
+  height: 794px;
   z-index: 1;
   clip-path: polygon(
     0 0,
@@ -109,9 +109,9 @@
 
 #big {
   position: absolute;
-  top: 88px;
-  left: calc(50% - 168px);
-  font-size: 528px;
+  top: 117.5px;
+  left: calc(50% - 140px);
+  font-size: 440px;
 }
 
 .anatomy {
@@ -130,6 +130,7 @@
 }
 
 .specimen-name {
+  width: 180px;
   text-wrap: balance;
 }
 
@@ -142,7 +143,7 @@
 .segment-header {
   color: var(--clay);
   font-size: 11px;
-  margin: 0 auto 10px 16px;
+  margin: 0 auto 9px 11px;
   padding-top: 66px;
   width: 100%;
 }
@@ -162,7 +163,8 @@
   border: var(--b) solid transparent;
 }
 
-.glyph-item:hover {
+.glyph-item:hover, .glyph-item:focus-visible {
+  outline: none;
   border: var(--b) solid #0000; /* space for the border */
   --_g: #0000 90deg, var(--c) 0;
   --_p: var(--w) var(--w) border-box no-repeat;
@@ -200,6 +202,14 @@
 .glyph-detail {
   display: block;
   font-size: 1rem;
+}
+
+.small-caps {
+  font-variant-caps: small-caps;
+}
+
+.old-numbers {
+  font-variant-numeric: oldstyle-nums;
 }
 
 @media screen and (max-width: 1115px) {

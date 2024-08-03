@@ -6,8 +6,9 @@ import {
   createEffect,
 } from "solid-js";
 import { TTF } from "fonteditor-core";
+import { cva, VariantProps } from "cva";
 
-import { font } from "../font";
+import { font, charMap } from "../font";
 import "./tester.css";
 
 type GlyphEntry = {
@@ -20,15 +21,30 @@ enum Segment {
   EXTENDED_LATIN = "EXTENDED LATIN",
   GREEK_AND_COPTIC = "GREEK AND COPTIC",
   PUNCTUATION = "PUNCTUATION",
-  NUMERALS = "NUMERALS",
+  DIGITS = "DIGITS",
+  NUMERALS = "NUMERALS, MATH, CURRENCY",
   GRAPHICAL = "GRAPHICAL",
 }
+
+const fontStyle = cva([], {
+  variants: {
+    feature: {
+      "small-caps": ["small-caps"],
+      "oldstyle-nums": ["old-numbers"],
+    },
+  },
+});
+
+type Feature = VariantProps<typeof fontStyle>["feature"];
 
 const CHAR_GROUPINGS: Record<Segment, (c: number) => boolean> = {
   [Segment.BASIC_LATIN]: (c) =>
     (c >= 0x0041 && c <= 0x005a) || (c >= 0x0061 && c <= 0x007a),
   [Segment.EXTENDED_LATIN]: (c) =>
-    (c >= 0x0c0 && c <= 0x02af) || (c >= 0x1e00 && c <= 0x1eff),
+    (c >= 0x00c0 && c <= 0x00d6)
+    || (c >= 0x00d8 && c <= 0x00f6)
+    || (c >= 0x00f8 && c <= 0x02af)
+    || (c >= 0x1e00 && c <= 0x1eff),
   [Segment.GREEK_AND_COPTIC]: (c) => c >= 0x0370 && c <= 0x03ff,
   [Segment.PUNCTUATION]: (c) =>
     (c >= 0x0021 && c <= 0x002f) ||
@@ -39,10 +55,10 @@ const CHAR_GROUPINGS: Record<Segment, (c: number) => boolean> = {
     (c >= 0x00b4 && c <= 0x00b8) ||
     (c >= 0x2013 && c <= 0x203a) ||
     [
-      0x003f, 0x0040, 0x00a1, 0x00bb, 0x00a6, 0x00a7, 0x2122, 0x2318, 0x2325,
+      0x003f, 0x0040, 0x00a1, 0x00bb, 0x00a6, 0x00a7, 0x00a9, 0x2122, 0x2318, 0x2325,
     ].includes(c),
+  [Segment.DIGITS]: (c) => (c >= 0x0030 && c <= 0x0039),
   [Segment.NUMERALS]: (c) =>
-    (c >= 0x0030 && c <= 0x0039) ||
     (c >= 0x003c && c <= 0x003e) ||
     (c >= 0x00a2 && c <= 0x00a5) ||
     (c >= 0x00b2 && c <= 0x00b3) ||
@@ -61,6 +77,7 @@ const CHAR_GROUPINGS: Record<Segment, (c: number) => boolean> = {
 
 export function Tester() {
   const [fk] = createResource(font());
+  const [cm] = createResource(charMap());
   const gs = createMemo<Record<string, GlyphEntry[]>>(() => {
     const f = fk()?.get();
     if (!f) return {};
@@ -83,12 +100,16 @@ export function Tester() {
   });
 
   const basicLatin = () => gs()[Segment.BASIC_LATIN];
+  const lower = () => gs()[Segment.BASIC_LATIN]?.filter(
+    (glyf) => glyf.code >= 0x61 && glyf.code <= 0x7A);
   const extendedLatin = () => gs()[Segment.EXTENDED_LATIN];
   const greek = () => gs()[Segment.GREEK_AND_COPTIC];
   const punctuation = () => gs()[Segment.PUNCTUATION];
+  const digits = () => gs()[Segment.DIGITS];
   const numerals = () => gs()[Segment.NUMERALS];
   const graphical = () => gs()[Segment.GRAPHICAL];
 
+  const [feature, setFeature] = createSignal<Feature>(null);
   const [glyf, setGlyf] = createSignal<TTF.Glyph | null>(null);
   createEffect(() => {
     if (fk.state === "ready") {
@@ -96,6 +117,11 @@ export function Tester() {
       setGlyf(amp);
     }
   });
+
+  function selectGlyph(g: TTF.Glyph, variant: Feature = null) {
+    setGlyf(g);
+    setFeature(variant);
+  }
 
   return (
     <div id="tester" class="maxwidth">
@@ -106,13 +132,16 @@ export function Tester() {
         <div id="glyph-specimen">
           <div class="specimen-details">
             <span class="specimen-name">
-              {glyf()?.name.toUpperCase() ?? "NULL"}
+              {cm()?.get(glyf()?.unicode[0]!)}
             </span>
-            <span>
-              U+
-              {glyf()?.unicode[0].toString(16).padStart(4, "0").toUpperCase() ??
-                "0000"}
-            </span>
+            <div style="display: flex; flex-direction: column; align-items: flex-end;">
+              <span>
+                U+
+                {glyf()?.unicode[0].toString(16).padStart(4, "0").toUpperCase() ??
+                  "0000"}
+              </span>
+              <span>{feature()?.toUpperCase()}</span>
+            </div>
           </div>
           <div class="anatomy">
             <span>
@@ -133,7 +162,7 @@ export function Tester() {
             <span>DESCENDER</span>
             <span>-100</span>
           </div>
-          <span id="big">{String.fromCharCode(glyf()?.unicode[0] ?? 0)}</span>
+          <span id="big" class={fontStyle({ feature: feature() })}>{String.fromCharCode(glyf()?.unicode[0] ?? 0)}</span>
         </div>
         <div id="glyph-list">
           <div class="segment-header">{Segment.BASIC_LATIN}</div>
@@ -141,8 +170,18 @@ export function Tester() {
             {(ge, _idx) => (
               <GlyphItem
                 {...ge}
-                selected={ge.glyf === glyf()}
-                onClick={() => setGlyf(ge.glyf)}
+                selected={ge.glyf === glyf() && !feature()}
+                onClick={() => selectGlyph(ge.glyf)}
+              />
+            )}
+          </For>
+          <For each={lower()}>
+            {(ge, _idx) => (
+              <GlyphItem
+                {...ge}
+                className="small-caps"
+                selected={ge.glyf === glyf() && feature() === "small-caps"}
+                onClick={() => selectGlyph(ge.glyf, "small-caps")}
               />
             )}
           </For>
@@ -152,7 +191,7 @@ export function Tester() {
               <GlyphItem
                 {...ge}
                 selected={ge.glyf === glyf()}
-                onClick={() => setGlyf(ge.glyf)}
+                onClick={() => selectGlyph(ge.glyf)}
               />
             )}
           </For>
@@ -162,7 +201,7 @@ export function Tester() {
               <GlyphItem
                 {...ge}
                 selected={ge.glyf === glyf()}
-                onClick={() => setGlyf(ge.glyf)}
+                onClick={() => selectGlyph(ge.glyf)}
               />
             )}
           </For>
@@ -172,17 +211,36 @@ export function Tester() {
               <GlyphItem
                 {...ge}
                 selected={ge.glyf === glyf()}
-                onClick={() => setGlyf(ge.glyf)}
+                onClick={() => selectGlyph(ge.glyf)}
               />
             )}
           </For>
           <div class="segment-header">{Segment.NUMERALS}</div>
+          <For each={digits()}>
+            {(ge, _idx) => (
+              <GlyphItem
+                {...ge}
+                selected={ge.glyf === glyf() && !feature()}
+                onClick={() => selectGlyph(ge.glyf)}
+              />
+            )}
+          </For>
+          <For each={digits()}>
+            {(ge, _idx) => (
+              <GlyphItem
+                {...ge}
+                className="old-numbers"
+                selected={ge.glyf === glyf() && feature() === "oldstyle-nums"}
+                onClick={() => selectGlyph(ge.glyf, "oldstyle-nums")}
+              />
+            )}
+          </For>
           <For each={numerals()}>
             {(ge, _idx) => (
               <GlyphItem
                 {...ge}
                 selected={ge.glyf === glyf()}
-                onClick={() => setGlyf(ge.glyf)}
+                onClick={() => selectGlyph(ge.glyf)}
               />
             )}
           </For>
@@ -192,7 +250,7 @@ export function Tester() {
               <GlyphItem
                 {...ge}
                 selected={ge.glyf === glyf()}
-                onClick={() => setGlyf(ge.glyf)}
+                onClick={() => selectGlyph(ge.glyf)}
               />
             )}
           </For>
@@ -204,7 +262,8 @@ export function Tester() {
 
 type GlyphItemProps = GlyphEntry & {
   selected: boolean;
-  onClick: (e: MouseEvent) => void;
+  className?: string;
+  onClick: (e: Event) => void;
 };
 
 function GlyphItem(props: GlyphItemProps) {
@@ -212,10 +271,12 @@ function GlyphItem(props: GlyphItemProps) {
 
   return (
     <div
-      class="glyph-item"
-      title={props.glyf.name.toUpperCase()}
+      class={`glyph-item ${props.className ?? ""}`}
+      title={`U+${props.glyf.unicode[0]}`}
+      tabindex={0}
       data-selected={props.selected}
       onClick={props.onClick}
+      onKeyPress={(e) => e.key === "Enter" && props.onClick(e)}
     >
       <span class="glyph-example">{content()}</span>
     </div>

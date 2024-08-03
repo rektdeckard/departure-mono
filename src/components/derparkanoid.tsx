@@ -6,14 +6,15 @@ import { Colors } from "../utils";
 import "./deparkanoid.css";
 
 const BALL_SIZE = 22;
-const BALL_SPEED = 12;
+const BALL_SPEED = 10;
 
-const PADDLE_WIDTH = 120;
-const PADDLE_HEIGHT = 12;
+const PADDLE_WIDTH = 99;
+const PADDLE_HEIGHT = 22;
 const PADDLE_SPEED = 16;
 
 const BRICK_WIDTH = 80;
 const BRICK_HEIGHT = 22;
+const BRICK_SHADOW_THICKNESS = 3;
 const BRICK_SCORE = 50;
 
 export function Deparkanoid() {
@@ -31,6 +32,8 @@ export function Deparkanoid() {
   let soundBounce: p5.MediaElement;
   let soundBreak: p5.MediaElement;
   let soundDie: p5.MediaElement;
+  let ballImage: p5.Image;
+  let paddleImage: p5.Image;
 
   function game(p: p5) {
     p.preload = () => {
@@ -38,6 +41,8 @@ export function Deparkanoid() {
       soundBounce = p.createAudio("/assets/2.mp3");
       soundBreak = p.createAudio("/assets/5.mp3");
       soundDie = p.createAudio("/assets/6.mp3");
+      ballImage = p.loadImage("/assets/ball.png");
+      paddleImage = p.loadImage("/assets/paddle.png");
     };
 
     p.setup = () => {
@@ -46,6 +51,7 @@ export function Deparkanoid() {
       ball = new Ball(p);
       ui = new UI(p);
 
+      p.imageMode(p.CENTER);
       p.textFont(font);
       p.background(Colors.carbon);
       p.fill(Colors.pumpkin);
@@ -90,8 +96,6 @@ export function Deparkanoid() {
         ball.checkPaddle(paddle);
       }
 
-      p.strokeWeight(4);
-      p.stroke(Colors.carbon);
       for (let brick of bricks) {
         brick.show();
       }
@@ -112,28 +116,28 @@ export function Deparkanoid() {
         0 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.smoke),
+      ).color(Colors.dark),
       new Brick(
         p,
         2 * BRICK_WIDTH,
         1 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.smoke),
+      ).color(Colors.dark),
       new Brick(
         p,
         3 * BRICK_WIDTH,
         2 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.smoke),
+      ).color(Colors.dark),
       new Brick(
         p,
         3 * BRICK_WIDTH,
         3 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.smoke),
+      ).color(Colors.dark),
 
       // RIGHT ANTENNA
       new Brick(
@@ -142,28 +146,28 @@ export function Deparkanoid() {
         0 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.smoke),
+      ).color(Colors.dark),
       new Brick(
         p,
         8 * BRICK_WIDTH,
         1 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.smoke),
+      ).color(Colors.dark),
       new Brick(
         p,
         7 * BRICK_WIDTH,
         2 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.smoke),
+      ).color(Colors.dark),
       new Brick(
         p,
         7 * BRICK_WIDTH,
         3 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.smoke),
+      ).color(Colors.dark),
 
       // LEFT EYE
       new Brick(
@@ -172,14 +176,14 @@ export function Deparkanoid() {
         6 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.smoke),
+      ).color(Colors.dark),
       new Brick(
         p,
         3 * BRICK_WIDTH,
         7 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.smoke),
+      ).color(Colors.dark),
 
       // RIGHT EYE
       new Brick(
@@ -188,14 +192,14 @@ export function Deparkanoid() {
         6 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.smoke),
+      ).color(Colors.dark),
       new Brick(
         p,
         7 * BRICK_WIDTH,
         7 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.smoke),
+      ).color(Colors.dark),
 
       // BODY
       new Brick(
@@ -204,49 +208,49 @@ export function Deparkanoid() {
         4 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         3 * BRICK_WIDTH,
         4 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         4 * BRICK_WIDTH,
         4 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         5 * BRICK_WIDTH,
         4 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         6 * BRICK_WIDTH,
         4 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         7 * BRICK_WIDTH,
         4 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         8 * BRICK_WIDTH,
         4 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
 
       new Brick(
         p,
@@ -254,49 +258,49 @@ export function Deparkanoid() {
         5 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         3 * BRICK_WIDTH,
         5 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         4 * BRICK_WIDTH,
         5 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         5 * BRICK_WIDTH,
         5 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         6 * BRICK_WIDTH,
         5 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         7 * BRICK_WIDTH,
         5 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         8 * BRICK_WIDTH,
         5 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
 
       new Brick(
         p,
@@ -304,49 +308,49 @@ export function Deparkanoid() {
         6 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         2 * BRICK_WIDTH,
         6 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         4 * BRICK_WIDTH,
         6 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         5 * BRICK_WIDTH,
         6 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         6 * BRICK_WIDTH,
         6 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         8 * BRICK_WIDTH,
         6 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         9 * BRICK_WIDTH,
         6 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
 
       new Brick(
         p,
@@ -354,49 +358,49 @@ export function Deparkanoid() {
         7 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         2 * BRICK_WIDTH,
         7 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         4 * BRICK_WIDTH,
         7 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         5 * BRICK_WIDTH,
         7 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         6 * BRICK_WIDTH,
         7 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         8 * BRICK_WIDTH,
         7 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         9 * BRICK_WIDTH,
         7 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
 
       new Brick(
         p,
@@ -404,77 +408,77 @@ export function Deparkanoid() {
         8 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         1 * BRICK_WIDTH,
         8 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         2 * BRICK_WIDTH,
         8 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         3 * BRICK_WIDTH,
         8 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         4 * BRICK_WIDTH,
         8 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         5 * BRICK_WIDTH,
         8 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         6 * BRICK_WIDTH,
         8 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         7 * BRICK_WIDTH,
         8 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         8 * BRICK_WIDTH,
         8 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         9 * BRICK_WIDTH,
         8 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         10 * BRICK_WIDTH,
         8 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
 
       new Brick(
         p,
@@ -482,77 +486,77 @@ export function Deparkanoid() {
         9 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         1 * BRICK_WIDTH,
         9 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         2 * BRICK_WIDTH,
         9 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         3 * BRICK_WIDTH,
         9 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         4 * BRICK_WIDTH,
         9 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         5 * BRICK_WIDTH,
         9 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         6 * BRICK_WIDTH,
         9 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         7 * BRICK_WIDTH,
         9 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         8 * BRICK_WIDTH,
         9 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         9 * BRICK_WIDTH,
         9 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         10 * BRICK_WIDTH,
         9 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
 
       new Brick(
         p,
@@ -560,77 +564,77 @@ export function Deparkanoid() {
         10 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         1 * BRICK_WIDTH,
         10 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         2 * BRICK_WIDTH,
         10 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         3 * BRICK_WIDTH,
         10 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         4 * BRICK_WIDTH,
         10 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         5 * BRICK_WIDTH,
         10 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         6 * BRICK_WIDTH,
         10 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         7 * BRICK_WIDTH,
         10 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         8 * BRICK_WIDTH,
         10 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         9 * BRICK_WIDTH,
         10 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         10 * BRICK_WIDTH,
         10 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
 
       new Brick(
         p,
@@ -638,77 +642,77 @@ export function Deparkanoid() {
         11 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         1 * BRICK_WIDTH,
         11 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         2 * BRICK_WIDTH,
         11 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         3 * BRICK_WIDTH,
         11 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         4 * BRICK_WIDTH,
         11 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         5 * BRICK_WIDTH,
         11 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         6 * BRICK_WIDTH,
         11 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         7 * BRICK_WIDTH,
         11 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         8 * BRICK_WIDTH,
         11 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         9 * BRICK_WIDTH,
         11 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         10 * BRICK_WIDTH,
         11 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
 
       new Brick(
         p,
@@ -716,42 +720,42 @@ export function Deparkanoid() {
         12 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         1 * BRICK_WIDTH,
         12 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         2 * BRICK_WIDTH,
         12 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         8 * BRICK_WIDTH,
         12 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         9 * BRICK_WIDTH,
         12 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         10 * BRICK_WIDTH,
         12 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
 
       new Brick(
         p,
@@ -759,28 +763,28 @@ export function Deparkanoid() {
         13 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         2 * BRICK_WIDTH,
         13 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         8 * BRICK_WIDTH,
         13 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         10 * BRICK_WIDTH,
         13 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
 
       new Brick(
         p,
@@ -788,28 +792,28 @@ export function Deparkanoid() {
         14 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         4 * BRICK_WIDTH,
         14 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         6 * BRICK_WIDTH,
         14 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         7 * BRICK_WIDTH,
         14 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
 
       new Brick(
         p,
@@ -817,28 +821,28 @@ export function Deparkanoid() {
         15 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         4 * BRICK_WIDTH,
         15 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         6 * BRICK_WIDTH,
         15 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
       new Brick(
         p,
         7 * BRICK_WIDTH,
         15 * BRICK_HEIGHT,
         BRICK_WIDTH,
         BRICK_HEIGHT,
-      ).color(Colors.ash),
+      ).color(Colors.smoke),
     ];
   }
 
@@ -879,10 +883,8 @@ export function Deparkanoid() {
     }
 
     show() {
-      this.p.fill(Colors.pumpkin);
-      this.p.circle(this.x, this.y + this.height / 2, this.height);
-      this.p.circle(this.x + this.width, this.y + this.height / 2, this.height);
-      this.p.rect(this.x, this.y, this.width, this.height);
+      this.p.imageMode(this.p.CORNER);
+      this.p.image(paddleImage, this.x, this.y, PADDLE_WIDTH, PADDLE_HEIGHT);
     }
 
     move() {
@@ -920,8 +922,8 @@ export function Deparkanoid() {
     }
 
     show() {
-      this.p.fill(Colors.amber);
-      this.p.circle(this.x, this.y, BALL_SIZE);
+      this.p.imageMode(this.p.CENTER);
+      this.p.image(ballImage, this.x, this.y, BALL_SIZE, BALL_SIZE);
     }
 
     move() {
@@ -998,7 +1000,7 @@ export function Deparkanoid() {
 
   class Brick {
     p: p5;
-    c: p5.Color | string = Colors.ash;
+    c: p5.Color | string = Colors.dark;
     x: number;
     y: number;
     w: number;
@@ -1018,8 +1020,23 @@ export function Deparkanoid() {
     }
 
     show() {
+      this.p.strokeWeight(4);
+      this.p.stroke(Colors.carbon);
       this.p.fill(this.c.toString());
       this.p.rect(this.x, this.y, this.w, this.h);
+      this.p.noStroke();
+      this.p.fill(255, 255, 255, 80);
+      this.p.rect(this.x + 2, this.y + 2, this.w - 4, BRICK_SHADOW_THICKNESS);
+      this.p.rect(
+        this.x + 2, this.y + 2 + BRICK_SHADOW_THICKNESS,
+        BRICK_SHADOW_THICKNESS, this.h - 4 - BRICK_SHADOW_THICKNESS,
+      );
+      this.p.fill(51, 51, 51);
+      this.p.rect(this.x + 2, this.y + this.h - 5, this.w - 4, BRICK_SHADOW_THICKNESS)
+      this.p.rect(
+        this.x + this.w - 5, this.y + 2,
+        BRICK_SHADOW_THICKNESS, this.h - 4 - BRICK_SHADOW_THICKNESS,
+      );
     }
   }
 
@@ -1047,13 +1064,13 @@ export function Deparkanoid() {
       this.p.fill(Colors.cement);
       this.p.textSize(16);
       this.p.textAlign(this.p.LEFT, this.p.TOP);
-      this.p.text(`SCORE ${score}`, 0, 0);
+      this.p.text(`SCORE\n${score.toString().padStart(5, "0")}`, 0, 0);
     }
   }
 
   createEffect(() => new p5(game));
   return (
-    <section id="deparkanoid">
+    <section id="deparkanoid" tabindex={0}>
       <canvas ref={el!}></canvas>
       <p class="comment">AND OF COURSE, PERFECT FOR YOUR 8-BIT VIDEO GAME OR ASCII ART</p>
     </section>
