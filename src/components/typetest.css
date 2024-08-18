@@ -1,0 +1,38 @@
+.type-samples {
+  display: flex;
+  flex-direction: column;
+  gap: 66px;
+  padding: 0 44px;
+  line-height: 1;
+}
+
+.type-sample {
+  display: flex;
+  flex-direction: column;
+}
+
+.type-sample-header {
+  display: flex;
+  align-items: center;
+  gap: 55px;
+}
+
+.type-sample-text {
+  color-scheme: light;
+  resize: none;
+  border: none;
+  color: inherit;
+  background: transparent;
+  font-family: inherit;
+  width: 100%;
+}
+
+.type-sample-text:focus-visible {
+  color: var(--bg);
+  background: var(--dark);
+  outline: none;
+}
+
+.type-sample-text::selection {
+  line-height: 1;
+}

@@ -8,7 +8,7 @@
 #apollo1 {
   position: absolute;
   transform: rotate(90deg);
-  top: 120px;
+  top: 966px;
   left: -391px;
   user-select: none;
 }
@@ -20,11 +20,8 @@
   position: relative;
 }
 
-@media screen and (max-width: 1115px) {
-  .split {
-    grid-template-columns: 378px 1fr;
-    gap: 55px;
-  }
+#glyph-specimen-static {
+  display: none;
 }
 
 #glyph-specimen {
@@ -163,7 +160,8 @@
   border: var(--b) solid transparent;
 }
 
-.glyph-item:hover, .glyph-item:focus-visible {
+.glyph-item:hover,
+.glyph-item:focus-visible {
   outline: none;
   border: var(--b) solid #0000; /* space for the border */
   --_g: #0000 90deg, var(--c) 0;
@@ -213,7 +211,12 @@
 }
 
 @media screen and (max-width: 1115px) {
-  #glyph-specimen  {
+  .split {
+    grid-template-columns: 378px 1fr;
+    gap: 55px;
+  }
+
+  #glyph-specimen {
     min-width: unset;
     width: 378px;
     height: 580px;
@@ -221,7 +224,7 @@
   }
 
   #glyph-specimen::before {
-    top:88px;
+    top: 88px;
   }
 
   #glyph-specimen::after {
@@ -243,3 +246,23 @@
   }
 }
 
+@media screen and (max-width: 1115px) {
+  .segment-header {
+    padding-top: 46px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .split {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #glyph-specimen {
+    display: none;
+  }
+
+  #glyph-specimen-static {
+    display: block;
+  }
+}

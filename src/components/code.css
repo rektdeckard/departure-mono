@@ -33,11 +33,8 @@
 
 #mission-report {
   position: relative;
-  margin-top: 1300px;
-  left: 342px;
-   /* caret-color: #ff7a18; */
-  /* caret-shape: underscore; */
-  caret: yellow block;
+  margin-top: 1375px;
+  left: 296px;
 }
 
 #code-rust {
@@ -54,6 +51,30 @@
 
 #code-sql {
   position: absolute;
-  top: 1576px;
-  left: 44px;
+  bottom: -31px;
+  left: -3px;
+}
+
+@media screen and (max-width: 1115px) {
+  #mission-report {
+    left: 87px;
+    margin-top: 872px;
+  }
+
+  #sensor {
+    left: 131px;
+  }
+
+  #code-js {
+    left: -284px;
+  }
+
+  #code-sql {
+    left: 326px;
+  }
+
+  #code .comment {
+    top: 735px;
+    left: 563px;
+  }
 }

@@ -6,12 +6,12 @@ export function Sensor() {
   createEffect(() => {
     (function rand() {
       setVal(Math.floor(Math.random() * 100));
-      setTimeout(rand, (Math.random() * 200) + 50);
+      setTimeout(rand, Math.random() * 200 + 50);
     })();
     // window.addEventListener("mousemove", (e) => {
     //   setVal(Math.max(0, Math.min(99, Math.abs(e.movementX) + Math.abs(e.movementY))));
     // });
   });
 
-  return (<span id="sensor">{val().toString().padStart(2, "0")}</span>);
+  return <span id="sensor">{val().toString().padStart(2, "0")}</span>;
 }

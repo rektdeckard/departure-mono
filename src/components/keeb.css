@@ -5,6 +5,7 @@
   gap: 114px;
   padding-top: 198px;
   padding-bottom: 28px;
+  color: var(--clay);
 }
 
 #diagram1 .comment {
@@ -21,4 +22,5 @@
 
 #keeb {
   font-size: 16.5px;
+  color: var(--clay);
 }

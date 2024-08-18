@@ -1,17 +1,20 @@
 header {
   position: relative;
-  padding: 120px 44px 0;
+  padding: 137px 0 0;
   background-color: var(--bg);
 }
 
-.headline {
+#title {
   display: inline-flex;
   align-items: flex-start;
   gap: 11px;
 }
 
-h2 {
-  font-size: 2rem;
+.headline {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 a {
@@ -24,12 +27,11 @@ a:hover {
 }
 
 menu {
-  position: absolute;
-  top: 158px;
-  right: 140px;
   display: flex;
   flex-direction: column;
   gap: 11px;
+  margin: 32px 22px 0 0;
+  color: var(--smoke);
 }
 
 menu > a {
@@ -44,15 +46,21 @@ sup {
   margin-left: -0.6em;
 }
 
-#title {
+.headline h1 {
   font-size: 88px;
-  line-height: 1.1;
   color: var(--carbon);
+}
+
+.headline h1 > :not(#version) {
   background-color: var(--cement);
 }
 
 #version {
+  position: relative;
+  top: 9px;
+  left: 11px;
   font-size: 11px;
+  vertical-align: top;
 }
 
 #departures {
@@ -60,20 +68,20 @@ sup {
   left: -290px;
   font-size: 44px;
   margin: 0 0 132px;
-  color: var(--dark);
 }
 
-@keyframes bloop {
-  from {
+@keyframes blink {
+  0%,
+  100% {
     background-color: transparent;
   }
-  to {
+  50% {
     background-color: var(--foam);
   }
 }
 
 #departures .blink {
-  animation: 500ms steps(2) alternate infinite bloop;
+  animation: blink 1s infinite steps(1);
 }
 
 #letter {
@@ -81,11 +89,11 @@ sup {
   display: grid;
   grid-template-columns: 155px 1fr;
   gap: 187px;
-  margin: 185px 0 413px 114px;
+  margin: 185px 0 492px 114px;
 }
 
 #letter .comment {
-  width: 155px;
+  width: 204px;
 }
 
 #brief {
@@ -94,9 +102,23 @@ sup {
 }
 
 #brief pre {
- position: relative;
- top: -82px;
- padding: 88px 66px 0;
+  position: relative;
+  top: -92px;
+  padding: 88px 66px 0;
+  line-height: 24.75px;
+}
+
+#newspaper-clipping {
+  position: absolute;
+  z-index: 1;
+  left: 836px;
+}
+
+#paperclip {
+  position: absolute;
+  z-index: 1;
+  top: -13px;
+  left: 1045px;
 }
 
 #badge {
@@ -107,65 +129,67 @@ sup {
 }
 
 #badge:hover {
-  transform: scale(1.1) translate(120px, -12px) rotate(3deg);
+  transform: translate(120px, -12px) rotate(3deg);
 }
 
 #highlighter {
   position: absolute;
-  top: 708px;
-  left: 208px;
+  top: 804px;
+  left: 308px;
 }
 
 #planet {
   position: absolute;
   top: 152px;
-  left: -164px;
+  left: -768px;
 }
 
 #ephemera {
   position: relative;
-  height: 855px;
+  height: 956px;
 }
 
 #ephemera .comment {
+  position: relative;
+  left: 231px;
   width: 177px;
 }
 
 #boarding-pass {
   position: absolute;
   left: 342px;
-  top: 66px;
+  top: 133px;
   transition: transform 200ms ease;
 }
 
 #receipt {
   position: absolute;
-  top: 150px;
-  left: 114px;
+  top: 217px;
+  left: 84px;
   transition: transform 200ms ease;
 }
 
 #bag-tag {
   position: absolute;
-  top: 334px;
-  left: 1026px;
+  top: 396px;
+  left: 904px;
+  transform: rotate(270deg);
   transition: transform 200ms ease;
 }
 
 #ephemera:hover {
   #boarding-pass {
-    transform: scale(1.05) rotate(2deg) translate(120px, 14px);
+    transform: translate(20px, -24px) rotate(2deg);
   }
 
   #receipt {
-    transform: scale(1.05) rotate(-3deg) translate(-96px, 12px);
+    transform: rotate(-3deg) translate(-96px, 12px);
   }
 
   #bag-tag {
-    transform: scale(1.05) rotate(4deg) translate(160px, 120px);
+    transform: translate(60px, 20px) rotate(275deg);
   }
 }
-
 
 #announce {
   position: relative;
@@ -177,4 +201,119 @@ sup {
 
 .highlight {
   background-color: var(--foam);
+}
+
+#mercury-diagram {
+  position: absolute;
+  top: 127px;
+  left: -505px;
+}
+
+@media screen and (max-width: 1115px) {
+  header {
+    padding: 87px 0 0;
+  }
+
+  .headline {
+    flex-direction: column;
+    gap: 43px;
+    line-height: 1.4;
+  }
+
+  menu {
+    margin: 0;
+  }
+
+  #letter {
+    margin: 110px 0 335px 0;
+    gap: 105px;
+  }
+
+  #badge {
+    left: -194px;
+  }
+
+  #highlighter {
+    left: 264px;
+  }
+
+  #departures {
+    margin: 0 0 88px;
+  }
+
+  #receipt {
+    top: 176px;
+    left: -159px;
+  }
+
+  #boarding-pass {
+    top: 88px;
+    left: 87px;
+  }
+
+  #bag-tag {
+    top: 281px;
+    left: 618px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .headline {
+    gap: 33px;
+  }
+
+  .headline h1 {
+    font-size: 44px;
+    width: 256px;
+  }
+
+  #letter {
+    display: block;
+    margin: 88px 0 688px;
+  }
+
+  #brief {
+    position: relative;
+    left: -123px;
+  }
+
+  #badge {
+    top: 369px;
+    left: 103px;
+    z-index: 1;
+  }
+
+  #letter .comment {
+    position: absolute;
+    top: 996px;
+    left: 113px;
+  }
+
+  #highlighter {
+    top: 1112px;
+    left: 57px;
+  }
+
+  #departures {
+    left: -100px;
+    font-size: 22px;
+  }
+
+  #ephemera .comment {
+    position: relative;
+    left: 57px;
+  }
+
+  #boarding-pass {
+    left: 57px;
+  }
+
+  #receipt {
+    left: -302px;
+  }
+
+  #bag-tag {
+    top: 349px;
+    left: 198px;
+  }
 }

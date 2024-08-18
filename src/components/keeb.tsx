@@ -4,7 +4,11 @@ export function Keeb() {
   return (
     <div id="diagram1" class="maxwidth">
       <p class="comment">
-        BOX DRAWING CHARACTERS INCLUDED FOR YOUR PSEUDO-GRAPHICAL NEEDS
+        <span> ░{"  "}INCLUDED: BOX DRAWING</span>
+        <br />
+        <span> ░{"  "}CHARACTERS FOR YOUR</span>
+        <br />
+        <span> ░{"  "}PSEUDO-GRAPHICAL NEEDS</span>
       </p>
       <pre id="proto">
         {`\

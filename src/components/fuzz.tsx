@@ -1,4 +1,3 @@
-
 import { createEffect } from "solid-js";
 import GlslCanvas from "glslCanvas";
 import { Timer } from "../utils";

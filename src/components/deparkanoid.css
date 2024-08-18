@@ -1,11 +1,23 @@
 #deparkanoid {
   position: relative;
-  margin: 130px 0 100px;
+  margin: 380px 0 100px;
 }
 
 #deparkanoid .comment {
   position: absolute;
-  bottom: -40px;
-  left: 180px;
+  top: -146px;
+  left: 540px;
   width: 225px;
+}
+
+@media screen and (max-width: 1115px) {
+  #deparkanoid .comment {
+    left: 44px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  #deparkanoid {
+    display: none;
+  }
 }

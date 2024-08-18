@@ -22,14 +22,14 @@
   --t: 0%;
   --flick: cubic-bezier(0.36, 2.09, 0.07, -1.52);
 
-  --amber: #ffa43a;
+  --amber: #ffa133;
   --pumpkin: #ff9548;
   --flux: #c8be50;
   --foam: #cad5aa;
-  --enamel: #f2f2f2;
-  --cement: #c0c0c0;
+  --enamel: #eeeeee;
+  --cement: #cccccc;
   --ash: #bbbbbb;
-  --clay: #70705c;
+  --clay: #6c6c58;
   --smoke: #666666;
   --dark: #444444;
   --soot: #333333;
@@ -37,7 +37,7 @@
   --black: #141414;
 
   --accent: var(--amber);
-  --fg: var(--smoke);
+  --fg: var(--dark);
   --bg: var(--enamel);
 
   color: var(--fg);
@@ -49,13 +49,20 @@
 @media (prefers-color-scheme: dark) {
 }
 
+html,
 body {
-  overflow-x: hidden;
+  max-width: 100%;
+  overflow-x: clip;
 }
 
-::selection, .light ::selection {
+::selection,
+.light ::selection {
   color: var(--enamel);
   background-color: var(--soot);
+}
+
+::spelling-error {
+  text-decoration: none;
 }
 
 main {
@@ -123,7 +130,8 @@ h2 {
 .comment {
   color: var(--clay);
   font-size: 11px;
-  line-height: 14px;
+  line-height: 18px;
+  white-space: preserve;
 }
 
 .control {
@@ -143,4 +151,22 @@ h2 {
 
 .accent {
   color: var(--accent);
+}
+
+@media screen and (max-width: 1115px) {
+  footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 66px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .maxwidth {
+    padding-inline: 22px;
+  }
+
+  .type-sample.hidden-small {
+    display: none;
+  }
 }

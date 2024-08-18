@@ -1,6 +1,6 @@
 import { createEffect } from "solid-js";
 import p5 from "p5";
-import { uncheckedClamp } from "Kdim";
+import { uncheckedClamp } from "kdim";
 
 import { Colors } from "../utils";
 import "./deparkanoid.css";
@@ -844,6 +844,8 @@ export function Deparkanoid() {
         BRICK_HEIGHT,
       ).color(Colors.smoke),
     ];
+
+    window.gtag("event", "deparkanoid_reset", { score });
   }
 
   class Paddle {
@@ -976,6 +978,7 @@ export function Deparkanoid() {
         .mult(BALL_SPEED);
       this.xSpeed = vector.x;
       this.ySpeed = vector.y;
+      window.gtag("event", "deparkanoid_start", { score });
     }
 
     checkBricks(bricks: Brick[]) {
@@ -1028,14 +1031,23 @@ export function Deparkanoid() {
       this.p.fill(255, 255, 255, 80);
       this.p.rect(this.x + 2, this.y + 2, this.w - 4, BRICK_SHADOW_THICKNESS);
       this.p.rect(
-        this.x + 2, this.y + 2 + BRICK_SHADOW_THICKNESS,
-        BRICK_SHADOW_THICKNESS, this.h - 4 - BRICK_SHADOW_THICKNESS,
+        this.x + 2,
+        this.y + 2 + BRICK_SHADOW_THICKNESS,
+        BRICK_SHADOW_THICKNESS,
+        this.h - 4 - BRICK_SHADOW_THICKNESS,
       );
       this.p.fill(51, 51, 51);
-      this.p.rect(this.x + 2, this.y + this.h - 5, this.w - 4, BRICK_SHADOW_THICKNESS)
       this.p.rect(
-        this.x + this.w - 5, this.y + 2,
-        BRICK_SHADOW_THICKNESS, this.h - 4 - BRICK_SHADOW_THICKNESS,
+        this.x + 2,
+        this.y + this.h - 5,
+        this.w - 4,
+        BRICK_SHADOW_THICKNESS,
+      );
+      this.p.rect(
+        this.x + this.w - 5,
+        this.y + 2,
+        BRICK_SHADOW_THICKNESS,
+        this.h - 4 - BRICK_SHADOW_THICKNESS,
       );
     }
   }
@@ -1072,7 +1084,10 @@ export function Deparkanoid() {
   return (
     <section id="deparkanoid" tabindex={0}>
       <canvas ref={el!}></canvas>
-      <p class="comment">AND OF COURSE, PERFECT FOR YOUR 8-BIT VIDEO GAME OR ASCII ART</p>
+      <p class="comment">
+        ░{"  "}OR YOUR 8-BIT VIDEO GAME
+        <br />░{"  "}OR ASCII ART TKTKTK
+      </p>
     </section>
   );
 }
