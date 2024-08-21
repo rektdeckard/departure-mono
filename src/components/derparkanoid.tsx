@@ -86,6 +86,19 @@ export function Deparkanoid() {
     p.draw = () => {
       p.background(Colors.carbon);
 
+      if (bricks.length === 0) {
+        p.fill(Colors.amber);
+        p.textAlign(p.CENTER, p.CENTER);
+        p.textSize(88);
+        p.text("YOU WIN", p.width / 2, 244);
+        if (performance.now() % 1000 < 500) {
+          p.fill(Colors.pumpkin);
+          p.textSize(33);
+          p.text("RIGHT CLICK TO INSERT COIN", p.width / 2 + 8, 328);
+        }
+        return;
+      }
+
       paddle.show();
       paddle.move();
 
@@ -1063,16 +1076,6 @@ export function Deparkanoid() {
       this.p.fill(Colors.pumpkin);
       this.p.textSize(32);
       this.p.textAlign(this.p.CENTER, this.p.CENTER);
-      if (bricks.length === 0) {
-        this.p.text("<<YOU WIN>>", this.p.width / 2, this.p.height * (2 / 3));
-      } else {
-        this.p.text(
-          "~~DEPARKANOID~~",
-          this.p.width / 2,
-          this.p.height * (2 / 3),
-        );
-      }
-
       this.p.fill(Colors.cement);
       this.p.textSize(16);
       this.p.textAlign(this.p.LEFT, this.p.TOP);
@@ -1083,11 +1086,11 @@ export function Deparkanoid() {
   createEffect(() => new p5(game));
   return (
     <section id="deparkanoid" tabindex={0}>
-      <canvas ref={el!}></canvas>
       <p class="comment">
-        ░{"  "}OR YOUR 8-BIT VIDEO GAME
-        <br />░{"  "}OR ASCII ART TKTKTK
+        ░{"  "}AND OF COURSE, DEPARTURE MONO IS PERFECT
+        <br />░{"  "}FOR YOUR 8-BIT VIDEO GAME OR ASCII ART
       </p>
+      <canvas ref={el!}></canvas>
     </section>
   );
 }

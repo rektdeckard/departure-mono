@@ -1,4 +1,4 @@
-import { Random } from "kdim";
+import { Random, Range } from "kdim";
 import { version } from "../../package.json";
 import { Printout } from "./printout";
 import { TypeTest } from "./typetest";
@@ -17,9 +17,9 @@ export function Header() {
           </div>
           <menu>
             <a href="/" download>
-              ►► DOWNLOAD
+              ↓ DOWNLOAD
             </a>
-            <a href="https://buymeacoffee.com/phosphoricons">►► DONATE</a>
+            <a href="https://buymeacoffee.com/helenazhang">♥ DONATE</a>
           </menu>
         </div>
         <div id="letter">
@@ -40,27 +40,29 @@ export function Header() {
           <br />
           {`├─────────┼─────────────────────────┼────────────┼───────┼──────────────┤`}
           <br />
-          {`│ LH789   │ TGK Tengoku             │ 13:45      │ Z23   │ Delayed      │`}
+          {`│ LH789   │ EUR Europa 1            │ 13:45      │ Z23   │ Delayed      │`}
           <br />
           <span class="blink">
-            │ XX123{`   `}│ MBA Moonbase Alpha{`      `}│ 08:00{`      `}│ 22
+            │ XX123{`   `}│ KBA Kuiper Alpha{`        `}│ 08:00{`      `}│ 22
             {`    `}│ On Time{`      `}│
           </span>
           <br />
           {`│ AF321   │ MAR Mars Landing        │ 09:15      │ 12    │ On Time      │`}
           <br />
-          {`│ UA567   │ NNY New New York        │ 11:20      │ C8    │ Departed     │`}
+          {`│ UA567   │ NTK New Tokyo           │ 11:20      │ C8    │ Departed     │`}
           <br />
-          {`│ QF678   │ LHR (London)            │ 20:00      │ 17    │ On Time      │`}
+          {`│ QF678   │ ZMB Zvezda Moonbase     │ 20:00      │ 17    │ On Time      │`}
         </pre>
         <div id="ephemera">
           <p class="comment">
             ░{"  "}IT'S GREAT FOR WORKING
             <br />░{"  "}WITH TABULAR DATA
           </p>
-          <img id="boarding-pass" src="/assets/boarding-pass.svg" />
-          <img id="receipt" src="/assets/receipt.svg" />
-          <img id="bag-tag" src="/assets/bag-tag.svg" />
+          <div id="ephemera-items">
+            <img id="boarding-pass" src="/assets/boarding-pass.svg" />
+            <img id="receipt" src="/assets/receipt.svg" />
+            <img id="bag-tag" src="/assets/bag-tag.svg" />
+          </div>
         </div>
         <TypeTest />
       </div>
@@ -71,55 +73,84 @@ export function Header() {
 const DEPARTURE = "DEPARTURE";
 const MONO = "MONO";
 const COGNATES: Record<string, string> = {
-  D: "DDDƊÐ",
-  E: "EEE3ΣΞƏ℮€Ǝ",
-  P: "PPP¶₽",
-  A: "AAAΛ4@",
-  R: "RRR2₹",
-  T: "TTT7₸",
-  U: "UUUɄ",
-  " ": "   _→~",
-  M: "MMM",
-  O: "OOO0ΘØ",
-  N: "NNNƝ",
+  E: "3ΣΞ€Ǝ",
+  A: "Λ",
+  R: "2₹",
+  T: "7",
+  U: "Ʉ",
+  " ": "_",
+  O: "0",
+  N: "Ɲ",
 } as const;
 
 function GlitchTitle() {
+  const MIN_DELAY = 400;
+  const MAX_DELAY = 2000;
+  const GLITCH_CHANCE = 0.1;
+  const GLITCH_DELAY = 30;
+
   const [departure, setDeparture] = createSignal<string>(DEPARTURE);
   const [space, setSpace] = createSignal<string>(" ");
   const [mono, setMono] = createSignal<string>(MONO);
 
-  function swapCognate(curr: string, original: string): string {
-    const idx = Random.natural(curr.length - 1);
-    const letter = original[idx];
-    const swaps = COGNATES[letter];
-    if (!!swaps) {
-      const swapped = [...curr];
-      swapped[idx] = Random.sample([...swaps])!;
-      return swapped.join("");
+  function glitchWord(original: string, odds: number[]): string {
+    const swaps = Random.sample(odds)!;
+    if (swaps === 0) return original;
+
+    const glitched = [...original];
+    const opts =
+      original.length === 1
+        ? [0]
+        : Random.permutation(Range.of(original.length));
+    for (let i = 0; i < swaps; i++) {
+      glitched[opts[i]] = Random.sample([
+        ...(COGNATES[original[opts[i]]] ?? original[opts[i]]),
+      ])!;
     }
-    return curr;
+
+    return glitched.join("");
   }
 
   createEffect(() => {
     (function d() {
-      setDeparture((val) => swapCognate(val, DEPARTURE));
-      setTimeout(d, Random.natural(400) + 50);
+      setDeparture(glitchWord(DEPARTURE, [0, 0, 0, 1, 1, 2, 2, 2, 3]));
+      if (Math.random() < GLITCH_CHANCE) {
+        const delay = Random.natural(MAX_DELAY - MIN_DELAY) + MIN_DELAY;
+        const glitched = glitchWord(DEPARTURE, [2, 3, 4, 4, 5, 5, 5, 6, 6]);
+        setTimeout(() => setDeparture(DEPARTURE), delay);
+        setTimeout(() => setDeparture(glitched), delay + GLITCH_DELAY);
+        setTimeout(() => setDeparture(DEPARTURE), delay + GLITCH_DELAY * 2);
+        setTimeout(() => setDeparture(glitched), delay + GLITCH_DELAY * 3);
+        setTimeout(d, delay + GLITCH_DELAY * 4);
+      } else {
+        setTimeout(d, Random.natural(MAX_DELAY - MIN_DELAY) + MIN_DELAY);
+      }
     })();
     (function s() {
-      setSpace((val) => swapCognate(val, " "));
-      setTimeout(s, Random.natural(400) + 50);
+      setSpace(glitchWord(" ", [0, 1, 1]));
+      setTimeout(s, Random.natural(MAX_DELAY - MIN_DELAY) + MIN_DELAY);
     })();
     (function m() {
-      setMono((val) => swapCognate(val, MONO));
-      setTimeout(m, Random.natural(400) + 50);
+      setMono(glitchWord(MONO, [0, 0, 0, 1, 1, 2, 2]));
+      if (Math.random() < GLITCH_CHANCE) {
+        const delay = Random.natural(MAX_DELAY - MIN_DELAY) + MIN_DELAY;
+        const glitched = glitchWord(DEPARTURE, [1, 1, 2, 2, 3, 3]);
+        setTimeout(() => setDeparture(DEPARTURE), delay);
+        setTimeout(() => setDeparture(glitched), delay + GLITCH_DELAY);
+        setTimeout(() => setDeparture(DEPARTURE), delay + GLITCH_DELAY * 2);
+        setTimeout(() => setDeparture(glitched), delay + GLITCH_DELAY * 3);
+        setTimeout(m, delay + GLITCH_DELAY * 4);
+      } else {
+        setTimeout(m, Random.natural(MAX_DELAY - MIN_DELAY) + MIN_DELAY);
+      }
     })();
   });
 
   return (
     <h1>
       <span>{departure()}</span>
-      <span>{space()}</span>
+      <span id="title-space-dyn">{space()}</span>
+      <span id="title-space-sta"> </span>
       <span>{mono()}</span>
       <span id="version">
         v{MAJOR}.{MINOR}

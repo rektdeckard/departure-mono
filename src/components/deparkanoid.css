@@ -6,13 +6,18 @@
 #deparkanoid .comment {
   position: absolute;
   top: -146px;
-  left: 540px;
-  width: 225px;
+  left: 154px;
+  width: 302px;
+  color: var(--mud);
 }
 
 @media screen and (max-width: 1115px) {
+  #deparkanoid {
+    margin: 286px 0 100px;
+  }
+
   #deparkanoid .comment {
-    left: 44px;
+    left: 93px;
   }
 }
 

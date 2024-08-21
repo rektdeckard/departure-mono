@@ -91,8 +91,8 @@ export function Cockpit() {
     return `${hs.toString().padStart(2, "0")}:${ms
       .toString()
       .padStart(2, "0")}:${ss.toString().padStart(2, "0")}:${cs
-      .toString()
-      .padStart(2, "0")}`;
+        .toString()
+        .padStart(2, "0")}`;
   };
 
   const tempString = () => {

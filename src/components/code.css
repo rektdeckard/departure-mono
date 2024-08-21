@@ -5,9 +5,10 @@
 
 #code .comment {
   position: absolute;
-  top: 1126px;
+  top: 1199px;
   left: 798px;
   width: 228px;
+  color: var(--mud);
 }
 
 #apollo2 {
@@ -29,6 +30,12 @@
   left: 342px;
   color: var(--accent);
   font-size: 220px;
+}
+
+#mercury-diagram {
+  position: absolute;
+  top: 127px;
+  left: -505px;
 }
 
 #mission-report {
@@ -58,11 +65,22 @@
 @media screen and (max-width: 1115px) {
   #mission-report {
     left: 87px;
-    margin-top: 872px;
+    margin-top: 1316px;
+  }
+
+  #mercury-diagram {
+    top: 88px;
+    left: -466px;
   }
 
   #sensor {
-    left: 131px;
+    left: 44px;
+    top: 286px;
+  }
+
+  #code-rust {
+    top: 210px;
+    left: 838px;
   }
 
   #code-js {
@@ -74,7 +92,7 @@
   }
 
   #code .comment {
-    top: 735px;
-    left: 563px;
+    top: 1180px;
+    left: 830px;
   }
 }

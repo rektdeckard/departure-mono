@@ -88,7 +88,7 @@
   width: 6px;
   height: 22px;
   border-radius: 2px;
-  top: 165px;
+  top: 176px;
   left: 22px;
   background-color: currentColor;
 }
@@ -99,7 +99,7 @@
   width: 6px;
   height: 22px;
   border-radius: 2px;
-  bottom: 165px;
+  bottom: 176px;
   left: 22px;
   background-color: currentColor;
 }
@@ -134,15 +134,15 @@
 #glyph-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 1ch;
 }
 
 .segment-header {
   color: var(--clay);
   font-size: 11px;
-  margin: 0 auto 9px 11px;
+  margin: 0 auto 16px 11px;
   padding-top: 66px;
   width: 100%;
+  color: var(--mud);
 }
 
 .glyph-item {
@@ -152,6 +152,7 @@
   align-items: center;
   font-size: 44px;
   padding: 2px;
+  margin: 0 6px;
 
   --b: 2px; /* thickness of the border */
   --c: var(--accent); /* color of the border */
@@ -264,5 +265,9 @@
 
   #glyph-specimen-static {
     display: block;
+  }
+
+  #apollo1 {
+    display: none;
   }
 }

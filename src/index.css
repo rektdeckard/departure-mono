@@ -23,12 +23,14 @@
   --flick: cubic-bezier(0.36, 2.09, 0.07, -1.52);
 
   --amber: #ffa133;
-  --pumpkin: #ff9548;
+  --pumpkin: #E47B1A;
   --flux: #c8be50;
-  --foam: #cad5aa;
+  --foam: #bccabb;
   --enamel: #eeeeee;
-  --cement: #cccccc;
-  --ash: #bbbbbb;
+  --cement: #c0c0c0;
+  --aluminum: #cccccc;
+  --ash: #8e8e8e;
+  --mud: #8A8A6F;
   --clay: #6c6c58;
   --smoke: #666666;
   --dark: #444444;
@@ -58,7 +60,7 @@ body {
 ::selection,
 .light ::selection {
   color: var(--enamel);
-  background-color: var(--soot);
+  background-color: var(--carbon);
 }
 
 ::spelling-error {
@@ -79,7 +81,7 @@ main {
 
 main ::selection {
   color: var(--carbon);
-  background-color: var(--enamel);
+  background-color: var(--cement);
 }
 
 section {
@@ -99,17 +101,25 @@ footer {
 h2 {
   font-size: 44px;
   line-height: 1.1;
+  color: var(--soot);
+  background-color: var(--ash);
+  line-height: 1;
+}
+
+.callout {
+  color: var(--mud);
+  border-left: 8px solid var(--mud);
+  padding-left: 13px;
+  font-size: 11px;
+  line-height: 14px;
+  padding: 8px 16px;
+}
+
+.callout::selection {
   color: var(--carbon);
   background-color: var(--cement);
 }
 
-.callout {
-  color: var(--clay);
-  border-left: 8px solid var(--clay);
-  padding-left: 13px;
-  font-size: 11px;
-  line-height: 14px;
-}
 
 .inverse {
   color: var(--bg);
@@ -157,7 +167,7 @@ h2 {
   footer {
     flex-direction: column;
     align-items: flex-start;
-    gap: 66px;
+    gap: 44px;
   }
 }
 

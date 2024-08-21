@@ -85,7 +85,8 @@ const CHARS: Record<Segment, number[]> = {
     0x017c, 0x1e93,
   ],
   [Segment.GREEK_AND_COPTIC]: [
-    ...Range.of({ from: 0x0391, to: 0x03a9 }),
+    ...Range.of({ from: 0x0391, to: 0x03a1 }),
+    ...Range.of({ from: 0x03a3, to: 0x03a9 }),
     ...Range.of({ from: 0x03b1, to: 0x03c9 }),
   ],
   [Segment.PUNCTUATION]: [
@@ -315,7 +316,11 @@ export function Tester() {
   function selectGlyph(g: TTF.Glyph, variant: Feature = null) {
     setGlyf(g);
     setFeature(variant);
-    window.gtag("event", "specimen_select_glyph", { name: g.name, variant });
+    window.gtag("event", "specimen_select_glyph", {
+      name: cm()?.get(g.unicode[0]) ?? g.name,
+      unicode: g.unicode[0],
+      variant,
+    });
   }
 
   return (
@@ -474,7 +479,7 @@ function GlyphItem(props: GlyphItemProps) {
   return (
     <div
       class={`glyph-item ${props.className ?? ""}`}
-      title={`U+${props.glyf.unicode[0]}`}
+      title={`U+${props.glyf.unicode[0].toString(16).padStart(4, "0").toUpperCase()}`}
       tabindex={0}
       data-selected={props.selected}
       onClick={props.onClick}

@@ -7,12 +7,13 @@ const SAMPLES: TypeSampleProps[] = [
     copy: "ATTN: PASSENGERS QUIET IN THE CABIN",
     size: 121,
     tracking: -11,
-    style: "gap: 3px;",
+    style: "gap: 3px; line-height: 1;",
   },
   {
     copy: "FLIGHT ATTENDANTS, PREPARE FOR TAKEOFF",
     size: 55,
-    style: "gap: 13px;",
+    tracking: -5,
+    style: "gap: 13px; line-height: 1;",
   },
   {
     copy: "DEPARTURE MONO IS A MONOSPACED PIXEL FONT INSPIRED BY THE CONSTRAINTS OF EARLY COMMAND-LINE AND GRAPHICAL USER INTERFACES, THE TINY PIXEL FONTS OF THE LATE 90S/EARLY 00s, AND SCI-FI CONCEPTS FROM FILM AND TELEVISION.",
@@ -55,9 +56,8 @@ function TypeSample(props: TypeSampleProps) {
         contenteditable
         spellcheck={false}
         children={props.copy}
-        style={`font-size: ${props.size}px; ${
-          props.tracking ? `letter-spacing: ${props.tracking}px` : ""
-        }`}
+        style={`font-size: ${props.size}px; ${props.tracking ? `letter-spacing: ${props.tracking}px` : ""
+          }`}
       />
     </div>
   );

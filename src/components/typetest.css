@@ -2,8 +2,6 @@
   display: flex;
   flex-direction: column;
   gap: 66px;
-  padding: 0 44px;
-  line-height: 1;
 }
 
 .type-sample {
@@ -15,6 +13,7 @@
   display: flex;
   align-items: center;
   gap: 55px;
+  color: var(--clay);
 }
 
 .type-sample-text {
@@ -31,8 +30,4 @@
   color: var(--bg);
   background: var(--dark);
   outline: none;
-}
-
-.type-sample-text::selection {
-  line-height: 1;
 }

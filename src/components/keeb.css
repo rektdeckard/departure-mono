@@ -13,6 +13,7 @@
   top: 132px;
   left: 228px;
   width: 212px;
+  color: var(--mud);
 }
 
 #proto {
@@ -23,4 +24,26 @@
 #keeb {
   font-size: 16.5px;
   color: var(--clay);
+}
+
+@media screen and (max-width: 767px) {
+  #diagram1 {
+    padding: 0;
+  }
+
+  #diagram1 .comment {
+    top: -86px;
+    left: 66px;
+  }
+
+  #proto {
+    position: relative;
+    font-size: 13px;
+    left: -295px;
+  }
+
+  #keeb {
+    position: relative;
+    left: -345px;
+  }
 }

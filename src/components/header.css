@@ -2,12 +2,16 @@ header {
   position: relative;
   padding: 137px 0 0;
   background-color: var(--bg);
+
+  --time: 1000ms;
+  --easing: cubic-bezier(1, 0.05, 0.48, 0.99);
 }
 
 #title {
   display: inline-flex;
   align-items: flex-start;
   gap: 11px;
+  line-height: 1;
 }
 
 .headline {
@@ -15,6 +19,25 @@ header {
   align-items: flex-start;
   justify-content: space-between;
   flex-wrap: wrap;
+}
+
+#title > h1 {
+  font-size: 88px;
+  color: var(--soot);
+}
+
+#title > h1 > :not(#version) {
+  background-color: var(--aluminum);
+  display: inline-block;
+  line-height: 1;
+  white-space: pre;
+}
+
+#title > h1 > #title-space-dyn {
+  display: inline-block;
+}
+#title > h1 > #title-space-sta {
+  display: none;
 }
 
 a {
@@ -29,15 +52,22 @@ a:hover {
 menu {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 11px;
   margin: 32px 22px 0 0;
-  color: var(--smoke);
+  color: var(--dark);
 }
 
 menu > a {
   text-decoration: none;
   font-size: 16.5px;
   line-height: 21px;
+  transition: background-color 75ms var(--flick);
+}
+
+menu > a:hover {
+  color: unset;
+  background-color: var(--foam);
 }
 
 sup {
@@ -46,18 +76,9 @@ sup {
   margin-left: -0.6em;
 }
 
-.headline h1 {
-  font-size: 88px;
-  color: var(--carbon);
-}
-
-.headline h1 > :not(#version) {
-  background-color: var(--cement);
-}
-
 #version {
   position: relative;
-  top: 9px;
+  top: 10px;
   left: 11px;
   font-size: 11px;
   vertical-align: top;
@@ -67,6 +88,7 @@ sup {
   position: relative;
   left: -290px;
   font-size: 44px;
+  line-height: 58px;
   margin: 0 0 132px;
 }
 
@@ -117,7 +139,7 @@ sup {
 #paperclip {
   position: absolute;
   z-index: 1;
-  top: -13px;
+  top: -14px;
   left: 1045px;
 }
 
@@ -125,11 +147,11 @@ sup {
   position: absolute;
   top: 258px;
   left: -250px;
-  transition: transform 200ms ease;
+  transition: transform 600ms var(--easing);
 }
 
 #badge:hover {
-  transform: translate(120px, -12px) rotate(3deg);
+  transform: rotate(3deg) translate(100px, -12px);
 }
 
 #highlighter {
@@ -147,6 +169,7 @@ sup {
 #ephemera {
   position: relative;
   height: 956px;
+
 }
 
 #ephemera .comment {
@@ -159,14 +182,12 @@ sup {
   position: absolute;
   left: 342px;
   top: 133px;
-  transition: transform 200ms ease;
 }
 
 #receipt {
   position: absolute;
   top: 217px;
   left: 84px;
-  transition: transform 200ms ease;
 }
 
 #bag-tag {
@@ -174,10 +195,18 @@ sup {
   top: 396px;
   left: 904px;
   transform: rotate(270deg);
-  transition: transform 200ms ease;
 }
 
-#ephemera:hover {
+#ephemera-items {
+  height: 736px;
+  margin-top: 70px;
+}
+
+#ephemera-items > * {
+  transition: transform var(--time) var(--easing);
+}
+
+#ephemera-items:hover {
   #boarding-pass {
     transform: translate(20px, -24px) rotate(2deg);
   }
@@ -203,15 +232,16 @@ sup {
   background-color: var(--foam);
 }
 
-#mercury-diagram {
-  position: absolute;
-  top: 127px;
-  left: -505px;
-}
-
 @media screen and (max-width: 1115px) {
   header {
     padding: 87px 0 0;
+  }
+
+  #title-space-dyn {
+    display: none;
+  }
+  #title-space-sta {
+    display: initial;
   }
 
   .headline {
@@ -229,12 +259,21 @@ sup {
     gap: 105px;
   }
 
+  #newspaper-clipping {
+    left: 612px;
+  }
+
+  #paperclip {
+    left: 821px;
+  }
+
   #badge {
     left: -194px;
   }
 
   #highlighter {
-    left: 264px;
+    top: 713px;
+    left: 416px;
   }
 
   #departures {
@@ -252,8 +291,8 @@ sup {
   }
 
   #bag-tag {
-    top: 281px;
-    left: 618px;
+    top: 346px;
+    left: 586px;
   }
 }
 
@@ -269,7 +308,7 @@ sup {
 
   #letter {
     display: block;
-    margin: 88px 0 688px;
+    margin: 88px 0 742px;
   }
 
   #brief {
@@ -278,25 +317,40 @@ sup {
   }
 
   #badge {
-    top: 369px;
-    left: 103px;
+    top: 374px;
+    left: -76px;
     z-index: 1;
+    pointer-events: none;
+  }
+
+  #newspaper-clipping {
+    top: 551px;
+    left: 156px;
+    z-index: 2;
+  }
+
+  #paperclip {
+    display: none;
   }
 
   #letter .comment {
     position: absolute;
-    top: 996px;
+    top: 1052px;
     left: 113px;
   }
 
   #highlighter {
-    top: 1112px;
-    left: 57px;
+    top: 1172px;
+    left: 0px;
   }
 
   #departures {
     left: -100px;
     font-size: 22px;
+  }
+
+  #ephemera {
+    pointer-events: none;
   }
 
   #ephemera .comment {
@@ -309,11 +363,11 @@ sup {
   }
 
   #receipt {
-    left: -302px;
+    left: -286px;
   }
 
   #bag-tag {
-    top: 349px;
-    left: 198px;
+    top: 410px;
+    left: 292px;
   }
 }
