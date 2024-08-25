@@ -150,7 +150,7 @@ function GlitchTitle() {
     <h1>
       <span>{departure()}</span>
       <span id="title-space-dyn">{space()}</span>
-      <span id="title-space-sta"> </span>
+      <br id="title-space-sta" />
       <span>{mono()}</span>
       <span id="version">
         v{MAJOR}.{MINOR}

@@ -1,7 +1,7 @@
 {
   "name": "departure-mono",
   "private": true,
-  "version": "0.5.0",
+  "version": "1.707.0",
   "type": "module",
   "scripts": {
     "dev": "vite",

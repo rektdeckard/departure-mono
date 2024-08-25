@@ -7,7 +7,7 @@
   position: absolute;
   top: 1199px;
   left: 798px;
-  width: 228px;
+  width: 182px;
   color: var(--mud);
 }
 
@@ -70,7 +70,7 @@
 
   #mercury-diagram {
     top: 88px;
-    left: -466px;
+    left: -642px;
   }
 
   #sensor {
@@ -80,7 +80,7 @@
 
   #code-rust {
     top: 210px;
-    left: 838px;
+    left: 618px;
   }
 
   #code-js {
@@ -93,6 +93,46 @@
 
   #code .comment {
     top: 1180px;
-    left: 830px;
+    left: unset;
+    right: 176px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  #diagram1 {
+    gap: 114px;
+  }
+
+  #mercury-diagram {
+    left: -953px;
+  }
+
+  #code-rust {
+    top: 88px;
+    left: 135px;
+  }
+
+  #code-sql {
+    left: 102px;
+    bottom: 56px;
+  }
+
+  #sensor {
+    left: 75px;
+    top: 970px;
+  }
+
+  #code .comment {
+    top: 1454px;
+  }
+
+  #mission-report {
+    left: 0;
+    margin: 1572px 0 320px;
+  }
+
+  #mission-report pre {
+    user-select: none;
+    pointer-events: none;
   }
 }

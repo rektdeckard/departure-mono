@@ -229,44 +229,6 @@ const CHARS: Record<Segment, number[]> = {
   ],
 } as const;
 
-// const CHAR_GROUPINGS: Record<Segment, (c: number) => boolean> = {
-//   [Segment.BASIC_LATIN]: (c) =>
-//     (c >= 0x0041 && c <= 0x005a) || (c >= 0x0061 && c <= 0x007a),
-//   [Segment.EXTENDED_LATIN]: (c) =>
-//     (c >= 0x00c0 && c <= 0x00d6)
-//     || (c >= 0x00d8 && c <= 0x00f6)
-//     || (c >= 0x00f8 && c <= 0x02af)
-//     || (c >= 0x1e00 && c <= 0x1eff),
-//   [Segment.GREEK_AND_COPTIC]: (c) => c >= 0x0370 && c <= 0x03ff,
-//   [Segment.PUNCTUATION]: (c) =>
-//     (c >= 0x0021 && c <= 0x002f) ||
-//     (c >= 0x003a && c <= 0x003f) ||
-//     (c >= 0x005b && c <= 0x0060) ||
-//     (c >= 0x007b && c <= 0x007e) ||
-//     (c >= 0x00ae && c <= 0x00b1) ||
-//     (c >= 0x00b4 && c <= 0x00b8) ||
-//     (c >= 0x2013 && c <= 0x203a) ||
-//     [
-//       0x003f, 0x0040, 0x00a1, 0x00bb, 0x00a6, 0x00a7, 0x00a9, 0x2122, 0x2318, 0x2325,
-//     ].includes(c),
-//   [Segment.DIGITS]: (c) => (c >= 0x0030 && c <= 0x0039),
-//   [Segment.NUMERALS]: (c) =>
-//     (c >= 0x003c && c <= 0x003e) ||
-//     (c >= 0x00a2 && c <= 0x00a5) ||
-//     (c >= 0x00b2 && c <= 0x00b3) ||
-//     (c >= 0x00b9 && c <= 0x00ba) ||
-//     (c >= 0x00bc && c <= 0x00be) ||
-//     (c >= 0x2070 && c <= 0x20bd) ||
-//     (c >= 0x2126 && c <= 0x215e) ||
-//     (c >= 0x2202 && c <= 0x2265) ||
-//     [
-//       0x0024, 0x0025, 0x002b, 0x005e, 0x007e, 0x00b5, 0x00b9, 0x00d7, 0x00f7,
-//       0x0192, 0x0e3f, 0x2030, 0x2044,
-//     ].includes(c),
-//   [Segment.GRAPHICAL]: (c) =>
-//     (c >= 0x2190 && c <= 0x2199) || (c >= 0x2500 && c <= 0x25ca),
-// } as const;
-
 export function Tester() {
   const [fk] = createResource(font());
   const [cm] = createResource(charMap());
@@ -278,8 +240,8 @@ export function Tester() {
         const entries = codepoints
           .map((cp) => ({ code: cp, glyf: f.glyf[f.cmap[cp.toString()]] }))
           .filter((g) => {
-            if (!g.glyf) {
-              console.log(
+            if (import.meta.env.DEV && !g.glyf) {
+              console.warn(
                 `Missing glyph for 0x${g.code.toString(16).padStart(4, "0")}`,
               );
             }

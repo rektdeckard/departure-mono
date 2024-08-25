@@ -248,15 +248,24 @@
 }
 
 @media screen and (max-width: 1115px) {
+  #tester {
+    padding-top: 105px;
+  }
+
   .segment-header {
     padding-top: 46px;
   }
 }
 
 @media screen and (max-width: 767px) {
+  #tester {
+    padding-top: 83px;
+  }
+
   .split {
     display: flex;
     flex-direction: column;
+    gap: 44px;
   }
 
   #glyph-specimen {

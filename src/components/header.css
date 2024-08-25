@@ -1,7 +1,6 @@
 header {
   position: relative;
   padding: 137px 0 0;
-  background-color: var(--bg);
 
   --time: 1000ms;
   --easing: cubic-bezier(1, 0.05, 0.48, 0.99);
@@ -88,7 +87,7 @@ sup {
   position: relative;
   left: -290px;
   font-size: 44px;
-  line-height: 58px;
+  line-height: 1.27;
   margin: 0 0 132px;
 }
 
@@ -148,6 +147,7 @@ sup {
   top: 258px;
   left: -250px;
   transition: transform 600ms var(--easing);
+  z-index: 1;
 }
 
 #badge:hover {
@@ -169,7 +169,6 @@ sup {
 #ephemera {
   position: relative;
   height: 956px;
-
 }
 
 #ephemera .comment {
@@ -234,19 +233,24 @@ sup {
 
 @media screen and (max-width: 1115px) {
   header {
-    padding: 87px 0 0;
+    padding: 132px 0 0;
   }
 
-  #title-space-dyn {
+  #title > h1 > span {
+    margin-bottom: 6px;
+  }
+
+  #title > h1 > #title-space-dyn {
     display: none;
   }
-  #title-space-sta {
+
+  #title > h1 > #title-space-sta {
     display: initial;
   }
 
   .headline {
     flex-direction: column;
-    gap: 43px;
+    gap: 38px;
     line-height: 1.4;
   }
 
@@ -280,35 +284,47 @@ sup {
     margin: 0 0 88px;
   }
 
+  #ephemera {
+    height: 883px;
+  }
+
   #receipt {
-    top: 176px;
+    top: 204px;
     left: -159px;
   }
 
   #boarding-pass {
-    top: 88px;
+    top: 106px;
     left: 87px;
   }
 
   #bag-tag {
-    top: 346px;
+    top: 376px;
     left: 586px;
   }
 }
 
 @media screen and (max-width: 767px) {
+  header {
+    padding-top: 88px;
+  }
+
   .headline {
     gap: 33px;
   }
 
-  .headline h1 {
+  #title > h1 {
     font-size: 44px;
     width: 256px;
   }
 
+  #title > h1 > span {
+    margin-bottom: 2.5px;
+  }
+
   #letter {
     display: block;
-    margin: 88px 0 742px;
+    margin: 88px 0 773px;
   }
 
   #brief {
@@ -335,21 +351,23 @@ sup {
 
   #letter .comment {
     position: absolute;
-    top: 1052px;
+    top: 1063px;
     left: 113px;
   }
 
   #highlighter {
-    top: 1172px;
+    top: 1203px;
     left: 0px;
   }
 
   #departures {
     left: -100px;
     font-size: 22px;
+    margin: 0 0 84px;
   }
 
   #ephemera {
+    height: 894px;
     pointer-events: none;
   }
 
@@ -359,15 +377,17 @@ sup {
   }
 
   #boarding-pass {
+    top: 117px;
     left: 57px;
   }
 
   #receipt {
+    top: 215px;
     left: -286px;
   }
 
   #bag-tag {
-    top: 410px;
+    top: 421px;
     left: 292px;
   }
 }

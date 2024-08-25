@@ -24,6 +24,13 @@
 #keeb {
   font-size: 16.5px;
   color: var(--clay);
+  line-height: 1.2;
+}
+
+@media screen and (max-width: 1115px) {
+  #diagram1 {
+    gap: 73px;
+  }
 }
 
 @media screen and (max-width: 767px) {
