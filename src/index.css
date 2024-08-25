@@ -109,11 +109,11 @@ h2 {
 
 .callout {
   color: var(--mud);
-  border-left: 8px solid var(--mud);
+  border-left: 7px solid var(--mud);
   padding-left: 13px;
   font-size: 11px;
   line-height: 14px;
-  padding: 8px 16px;
+  padding: 8px 0 8px 12px;
 }
 
 .callout::selection {
@@ -180,7 +180,11 @@ h2 {
   }
 
   footer {
-    gap: 33px;
+    gap: 22px;
     padding-bottom: 33px;
+  }
+
+  h2 {
+    font-size: 33px;
   }
 }
