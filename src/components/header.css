@@ -1,6 +1,7 @@
 header {
   position: relative;
   padding: 137px 0 0;
+  background-color: var(--bg);
 
   --time: 1000ms;
   --easing: cubic-bezier(1, 0.05, 0.48, 0.99);

@@ -23,14 +23,14 @@
   --flick: cubic-bezier(0.36, 2.09, 0.07, -1.52);
 
   --amber: #ffa133;
-  --pumpkin: #E47B1A;
+  --pumpkin: #e47b1a;
   --flux: #c8be50;
   --foam: #bccabb;
   --enamel: #eeeeee;
   --cement: #c0c0c0;
   --aluminum: #cccccc;
   --ash: #8e8e8e;
-  --mud: #8A8A6F;
+  --mud: #8a8a6f;
   --clay: #6c6c58;
   --smoke: #666666;
   --dark: #444444;
@@ -43,7 +43,7 @@
   --bg: var(--enamel);
 
   color: var(--fg);
-  background-color: var(--bg);
+  background-color: var(--carbon);
   /* color: hsl(30 1% min(88%, var(--scroll) * 8)); */
   /* background-color: hsl(30 1% calc(100% -  min(88%, var(--scroll) * 8))); */
 }
@@ -104,7 +104,7 @@ h2 {
   color: var(--soot);
   background-color: var(--ash);
   line-height: 1;
-  z-index: 1
+  z-index: 1;
 }
 
 .callout {
@@ -120,7 +120,6 @@ h2 {
   color: var(--carbon);
   background-color: var(--cement);
 }
-
 
 .inverse {
   color: var(--bg);
