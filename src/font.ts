@@ -9,7 +9,7 @@ export function font(
   onDone?: Opts<ArrayBuffer>["onDone"],
 ) {
   return async function () {
-    const buf = await fetchWithProgress("/assets/dm.otf", {
+    const buf = await fetchWithProgress("/assets/DepartureMono-Regular.otf", {
       responseType: "arraybuffer",
       onProgress,
       onDone,

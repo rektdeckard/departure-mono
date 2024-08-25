@@ -16,7 +16,7 @@ export function Header() {
             <GlitchTitle />
           </div>
           <menu>
-            <a href="/" download>
+            <a href={`/assets/DepartureMono-${MAJOR}.${MINOR}.zip`} download>
               ↓ DOWNLOAD
             </a>
             <a href="https://buymeacoffee.com/helenazhang">♥ DONATE</a>

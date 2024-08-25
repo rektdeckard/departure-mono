@@ -37,7 +37,7 @@ export function Deparkanoid() {
 
   function game(p: p5) {
     p.preload = () => {
-      font = p.loadFont("/assets/dm.otf");
+      font = p.loadFont("/assets/DepartureMono-Regular.otf");
       soundBounce = p.createAudio("/assets/2.mp3");
       soundBreak = p.createAudio("/assets/5.mp3");
       soundDie = p.createAudio("/assets/6.mp3");
