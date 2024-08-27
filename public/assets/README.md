@@ -6,12 +6,14 @@ Thanks for trying Departure Mono (departuremono.com), licensed under the SIL OFL
 
 # FONT INFORMATION
 
-The latest version supports 763 total glyphs, including:
+Version 1.346 supports 763 total glyphs, including:
 
-- Basic Latin, Latin-1, Latin Exentded-A, and most Latinate languages
+- Basic Latin, Latin-1, Latin Extended-A, and most Latinate languages
 - Basic Greek
 - Simple box-drawing characters and selected symbols
 
 # USAGE
 
-For best results, use at increments of 11px.
+For pixel-perfect results, set the font size to increments of 11px.
+
+If you're okay with folding to half pixels, try -.5px tracking at 11px (-1px at 22px, etc.) for a more comfortable read.
