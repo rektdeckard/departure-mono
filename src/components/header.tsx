@@ -17,7 +17,8 @@ export function Header() {
             <GlitchTitle />
           </div>
           <menu>
-            <a href={GITHUB_RELEASES_URL}>↓ DOWNLOAD</a>
+            <a href={`/assets/DepartureMono-${MAJOR}.${MINOR}.zip`}>↓ DOWNLOAD</a>
+            <a href={GITHUB_RELEASES_URL}>&gt; GITHUB</a>
             <a href="https://buymeacoffee.com/helenazhang">♥ DONATE</a>
           </menu>
         </div>

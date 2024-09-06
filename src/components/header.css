@@ -53,8 +53,8 @@ menu {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 11px;
-  margin: 32px 22px 0 0;
+  gap: 6px;
+  margin: 8px 22px 0 0;
   color: var(--dark);
 }
 
@@ -257,6 +257,7 @@ sup {
 
   menu {
     margin: 0;
+    gap: 11px;
   }
 
   #letter {
