@@ -1,28 +1,33 @@
+<h1 align="center">
+  <br>
+  <a href="http://departuremono.com">
+    <img src="https://github.com/rektdeckard/departure-mono/blob/main/public/assets/departure-og.png?raw=true" alt="Departure Mono" width="630">
+  </a>
+  <br>
+    Departure Mono
+  <br>
+</h1>
+
+<h4 align="center">A MONOSPACED PIXEL FONT WITH A LO-FI TECHNICAL VIBE</h4>
+
+## About
+
+Departure Mono is a monospaced pixel font inspired by the constraints of early command-line and graphical user interfaces, the tiny pixel fonts of the late 90s/early 00s, and sci-fi concepts from film and television.
+
+## Installation
+
+Download the latest release from the [releases](https://github.com/rektdeckard/departure-mono/releases/latest) page.
+
 ## Usage
 
-```bash
-$ npm install # or pnpm install or yarn install
-```
+For pixel-perfect results, set the font size to increments of 11px.
 
-### Learn more on the [Solid Website](https://solidjs.com) and come chat with us on our [Discord](https://discord.com/invite/solidjs)
+Experiment with tighter tracking (letter-spacing) for a more comfortable read in some cases — or wider tracking for a sci-fi effect.
 
-## Available Scripts
+## Licenses
 
-In the project directory, you can run:
+| Resource | License | Licensor |
+| -------- | ------- | -------- |
+| Font     | [SIL OFL](https://github.com/rektdeckard/departure-mono/blob/main/public/assets/LICENSE?raw=true) | [Helena Zhang](https://helenazhang.com) |
+| Site     | MIT     | [Helena Zhang](https://helenazhang.com), [Tobias Fried](https://tobiasfried.com) |
 
-### `npm run dev`
-
-Runs the app in the development mode.<br>
-Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
-
-### `npm run build`
-
-Builds the app for production to the `dist` folder.<br>
-It correctly bundles Solid in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-## Deployment
-
-Learn more about deploying your application with the [documentations](https://vitejs.dev/guide/static-deploy.html)
