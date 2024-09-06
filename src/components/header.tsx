@@ -6,6 +6,7 @@ import "./header.css";
 import { createEffect, createSignal } from "solid-js";
 
 const [MAJOR, MINOR] = version.split(".");
+const GITHUB_RELEASES_URL = "https://github.com/rektdeckard/departure-mono/releases/latest";
 
 export function Header() {
   return (
@@ -16,9 +17,7 @@ export function Header() {
             <GlitchTitle />
           </div>
           <menu>
-            <a href={`/assets/DepartureMono-${MAJOR}.${MINOR}.zip`} download>
-              ↓ DOWNLOAD
-            </a>
+            <a href={GITHUB_RELEASES_URL}>↓ DOWNLOAD</a>
             <a href="https://buymeacoffee.com/helenazhang">♥ DONATE</a>
           </menu>
         </div>
