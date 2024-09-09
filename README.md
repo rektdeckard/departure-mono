@@ -16,6 +16,16 @@ Departure Mono is a monospaced pixel font inspired by the constraints of early c
 
 ## Installation
 
+### macOS
+
+Departure Mono can be installed and upgraded with the **Homebrew** package manager:
+
+```sh
+brew install font-departure-mono
+```
+
+### Manual
+
 Download the latest release from the [releases](https://github.com/rektdeckard/departure-mono/releases/latest) page.
 
 ## Usage
@@ -26,8 +36,8 @@ Experiment with tighter tracking (letter-spacing) for a more comfortable read in
 
 ## Licenses
 
-| Resource | License | Licensor |
+| Resource | License | Author   |
 | -------- | ------- | -------- |
 | Font     | [SIL OFL](https://github.com/rektdeckard/departure-mono/blob/main/public/assets/LICENSE?raw=true) | [Helena Zhang](https://helenazhang.com) |
-| Site     | MIT     | [Helena Zhang](https://helenazhang.com), [Tobias Fried](https://tobiasfried.com) |
+| Site     | [MIT](https://github.com/rektdeckard/departure-mono/blob/main/LICENSE?raw=true)     | [Helena Zhang](https://helenazhang.com), [Tobias Fried](https://tobiasfried.com) |
 
