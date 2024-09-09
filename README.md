@@ -8,7 +8,7 @@
   <br>
 </h1>
 
-<h4 align="center">A MONOSPACED PIXEL FONT WITH A LO-FI TECHNICAL VIBE</h4>
+<h4 align="center">A monospaced pixel font with a lo-fi technical vibe</h4>
 
 ## About
 
@@ -16,9 +16,17 @@ Departure Mono is a monospaced pixel font inspired by the constraints of early c
 
 ## Installation
 
+### Homebrew
+
+For macOS users, the [Homebrew](https://brew.sh) package manager can be used to install and upgrade the font using the [`font-departure-mono`](https://formulae.brew.sh/cask/font-departure-mono#default) formula:
+
+```sh
+brew install font-departure-mono
+```
+
 ### Nix
 
-If you're using the [Nix](https://nixos.org) package manager or NixOS, you can install font using it's canonical name: [`departure-mono`](https://search.nixos.org/packages?channel=unstable&show=departure-mono&from=0&size=50&sort=relevance&type=packages&query=departure-mono):
+If you're using the [Nix](https://nixos.org) package manager or NixOS, you can install font using its canonical name: [`departure-mono`](https://search.nixos.org/packages?channel=unstable&show=departure-mono&from=0&size=50&sort=relevance&type=packages&query=departure-mono):
 
 ```sh
 # Here's an example on how to install it using `nix profile`
@@ -37,14 +45,6 @@ For [NixOS](https://nixos.org) users, you can add the font to your system config
     pkgs.departure-mono
   ];
 }
-```
-
-### macOS
-
-Departure Mono can be installed and upgraded with the **Homebrew** package manager:
-
-```sh
-brew install font-departure-mono
 ```
 
 ### Manual
