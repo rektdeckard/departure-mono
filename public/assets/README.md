@@ -1,12 +1,12 @@
-# HELLO!
+# Hello!
 
 Thanks for trying Departure Mono (departuremono.com), licensed under the SIL OFL. Send your questions and suggestions to hello@helenazhang.com or DM me on Twitter/X: @minor_axis. Donations much appreciated at: buymeacoffee.com/helenazhang. Enjoy!
 
 — Helena Zhang (helenazhang.com)
 
-# FONT INFORMATION
+# Font Information
 
-Version 1.420 features 1,030 glyphs, including support for:
+Version 1.422 features 1,034 glyphs, including support for:
 
 - Basic Latin, Latin-1, Latin Extended-A, and most Latinate languages
 - Cyrillic
@@ -15,13 +15,20 @@ Version 1.420 features 1,030 glyphs, including support for:
 - Old-style numerals and fractions
 - Simple box-drawing characters and selected symbols
 
-# USAGE
+# Usage
 
 For pixel-perfect results, set the font size to increments of 11px.
 
 Experiment with tighter or wider tracking (letter-spacing).
 
-# CHANGELOG
+# Changelog
+
+v1.422
+- 1,034 glyphs
+- Added stars: ★ ☆ ✦ ✧
+- Fixed bug: Ё and ё were missing accents
+- Adjusted: ₽ Д д Ы ы Ъ ъ
+- Serifed: Г г Ѓ ѓ Ґ ґ Ӷ ӷ
 
 v1.420
 - 1,030 glyphs
@@ -42,6 +49,6 @@ v1.350
 v1.346
 - 763 glyphs
 
-# THANKS
+# Thanks
 
-A big thank you to: Tobias Fried, Christine Lee, Daniel Stern, Kim Slawson, Parker McGowan, Alex Krivov, and Karl Peterson for their general feedback and testing across languages
+A big thank you to: Tobias Fried, Christine Lee, Daniel Stern, Kim Slawson, Parker McGowan, Alex Krivov, Karl Peterson, Alexander Zaytsev, Vadim Pleshkov, and Maxim Iorsh for their general feedback and testing across languages
