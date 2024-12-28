@@ -229,6 +229,11 @@ const CHARS: Record<Segment, number[]> = {
     0x2663,
     0x2665,
     0x2666,
+    // Stars
+    0x2605,
+    0x2606,
+    0x2726,
+    0x2727,
     // Shading
     0x2584,
     0x2588,
