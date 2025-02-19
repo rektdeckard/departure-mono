@@ -34,6 +34,7 @@ export function Deparkanoid() {
   let soundDie: p5.MediaElement;
   let ballImage: p5.Image;
   let paddleImage: p5.Image;
+  let autoPlay = false;
 
   function game(p: p5) {
     p.preload = () => {
@@ -72,7 +73,12 @@ export function Deparkanoid() {
         if (e.key === " ") {
           enableGame = true;
           ball.reset();
-          return false;
+        }
+        if (e.key === "≥" && e.altKey) {
+          autoPlay = !autoPlay;
+        }
+        if (e.key === "÷" && e.altKey) {
+          enableSounds = !enableSounds
         }
       });
       el.addEventListener("contextmenu", (e) => {
@@ -100,7 +106,12 @@ export function Deparkanoid() {
       }
 
       paddle.show();
-      paddle.move();
+
+      if (autoPlay) {
+        paddle.automove(ball);
+      } else {
+        paddle.move();
+      }
 
       ball.show();
       if (enableGame) {
@@ -917,6 +928,14 @@ export function Deparkanoid() {
         this.x,
       );
     }
+
+    automove(ball: Ball) {
+      this.x = uncheckedClamp(
+        PADDLE_HEIGHT / 2,
+        this.p.width - this.width - PADDLE_HEIGHT / 2,
+        ball.x - this.width / 2,
+      );
+    }
   }
 
   class Ball {
@@ -965,7 +984,10 @@ export function Deparkanoid() {
       }
       if (this.y > this.p.height) {
         enableGame = false;
-        if (enableSounds) soundDie.play();
+        if (enableSounds) {
+          soundDie.stop();
+          soundDie.play();
+        }
         this.reset();
       }
     }
@@ -979,7 +1001,10 @@ export function Deparkanoid() {
         this.ySpeed *= -1;
         this.y = paddle.y - this.radius;
 
-        if (enableSounds) soundBounce.play();
+        if (enableSounds) {
+          soundBounce.stop();
+          soundBounce.play();
+        }
       }
     }
 
@@ -1007,7 +1032,10 @@ export function Deparkanoid() {
           collision ||= true;
           score += BRICK_SCORE;
           bricks.splice(i, 1);
-          if (enableSounds) soundBreak.play();
+          if (enableSounds) {
+            soundBreak.stop();
+            soundBreak.play();
+          }
         }
       }
       if (collision) this.ySpeed *= -1;
