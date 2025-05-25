@@ -718,7 +718,6 @@ Punctuation, Symbols
 002F
 005C
 002D
-00AD
 2013
 2014
 2E17
