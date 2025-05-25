@@ -1,17 +1,18 @@
 {
   "name": "departure-mono",
   "private": true,
-  "version": "1.422.0",
+  "version": "1.500.0",
   "type": "module",
-  "packageManager": "pnpm@9",
+  "packageManager": "pnpm@10.6.3",
   "scripts": {
+    "predev": "pnpm run assemble",
     "dev": "vite",
+    "prebuild": "pnpm run assemble",
     "build": "tsc -b && vite build",
     "format": "prettier --write --ignore-unknown .",
     "prettier:check": "prettier --check --ignore-unknown .",
     "preview": "vite preview",
-    "predeploy": "pnpm build",
-    "deploy": "gh-pages --cname departuremono.com -d dist"
+    "assemble": "pnpm dlx tsx ./scripts/assemble.ts"
   },
   "dependencies": {
     "@ark-ui/solid": "^3.6.2",
@@ -39,6 +40,7 @@
     "solid-js": "^1.8.18"
   },
   "devDependencies": {
+    "@types/node": "^22.15.21",
     "@types/p5": "^1.7.6",
     "gh-pages": "^6.1.1",
     "prettier": "^3.3.3",

@@ -18,7 +18,7 @@ export function font(
   };
 }
 
-export function charMap() {
+export function charDb() {
   return async function () {
     const json = await fetchWithProgress<Record<string, string>>(
       "/assets/cm.json",

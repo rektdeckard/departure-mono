@@ -10,7 +10,7 @@ export type FetchWithProgressOptions<D> = {
 export class Timer {
   seconds: number;
   signal: Signal<number>;
-  interval: number | undefined;
+  interval: NodeJS.Timeout | undefined;
 
   constructor(seconds: number) {
     this.seconds = seconds;

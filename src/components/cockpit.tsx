@@ -1,6 +1,6 @@
 import { createSignal, createEffect, For, createResource } from "solid-js";
 import { Range } from "kdim";
-import { font } from "../font";
+import { font } from "../lib/font";
 import "./cockpit.css";
 
 type Point = { x: number; y: number };

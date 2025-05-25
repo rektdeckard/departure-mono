@@ -6,7 +6,7 @@ Thanks for trying Departure Mono (departuremono.com), licensed under the SIL OFL
 
 # Font Information
 
-Version 1.422 features 1,034 glyphs, including support for:
+Version 1.500 features 1,186 glyphs, including support for:
 
 - Basic Latin, Latin-1, Latin Extended-A, and most Latinate languages
 - Cyrillic
@@ -22,6 +22,11 @@ For pixel-perfect results, set the font size to increments of 11px.
 Experiment with tighter or wider tracking (letter-spacing).
 
 # Changelog
+
+v1.500
+- 1,186 glyphs
+- Added box-drawing characters: ▁ ▂ ▃ ▅ ▆ ▇ ▔ ▏ ▎ ▍ ▌ ▋ ▊ ▉ ▐ ▕ ▖ ▗ ▘ ▙ ▚ ▛ ▜ ▝ ▞ ▟ ■ □ ▪ ▫ ╦ ╖ ╓ ┰ ┒ ┧ ┎ ┟ ╁ ┯ ┑ ┩ ┍ ┡ ╇ ╤ ╕ ╒ ╍ ╏ ╻ ┳ ┓ ┏ ━ ╸ ╾ ┉ ┋ ╺ ┅ ┇ ╹ ┻ ┛ ╿ ┗ ┃ ╋ ┫ ┣ ╅ ┭ ┵ ┽ ┲ ┺ ╊ ╃ ╮ ╭ ╯ ╰ ╳ ╲ ╱ ╌ ╎ ╷ ╴ ╼ ┈ ┊ ╶ ┄ ┆ ╵ ╽ ╆ ┮ ┶ ┾ ┱ ┹ ╉ ╄ ╨ ╜ ╙ ╀ ┸ ┦ ┚ ┞ ┖ ╈ ┷ ┪ ┙ ┢ ┕ ╧ ╛ ╘ ╫ ╢ ╟ ╂ ┨ ┠ ┿ ┥ ┝ ╪ ╡ ╞ 🮂 🮃 🮄 🮅 🮆 🮇 🮈 🮉 🮊 🮋
++ Added brackets: ❰ ❮ ❱ ❯ ❬ ❭
 
 v1.422
 - 1,034 glyphs

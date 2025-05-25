@@ -137,6 +137,7 @@
 }
 
 .segment-header {
+  text-transform: uppercase;
   color: var(--clay);
   font-size: 11px;
   margin: 0 auto 16px 11px;
@@ -201,14 +202,6 @@
 .glyph-detail {
   display: block;
   font-size: 1rem;
-}
-
-.small-caps {
-  font-variant-caps: small-caps;
-}
-
-.old-numbers {
-  font-variant-numeric: oldstyle-nums;
 }
 
 @media screen and (max-width: 1115px) {
@@ -279,4 +272,40 @@
   #apollo1 {
     display: none;
   }
+}
+
+/******************************************************************************/
+/* These classes must map to font feature settings from Glyphs 3.             */
+/******************************************************************************/
+
+.sc {
+  font-variant: small-caps;
+}
+
+.osf {
+  font-variant: oldstyle-nums;
+}
+
+.lf {
+  font-variant: lining-nums;
+}
+
+.numr {
+  font-variant: numerator;
+}
+
+.dnom {
+  font-variant: denominator;
+}
+
+.loclNLD {
+  font-feature-settings: "locl";
+}
+
+.ss01 {
+  font-variant: stylistic;
+}
+
+.ss02 {
+  font-variant: stylistic-2;
 }

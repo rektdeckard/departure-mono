@@ -2,7 +2,7 @@ import { createEffect } from "solid-js";
 import p5 from "p5";
 import { uncheckedClamp } from "kdim";
 
-import { Colors } from "../utils";
+import { Colors } from "../lib/utils";
 import "./deparkanoid.css";
 
 const BALL_SIZE = 22;

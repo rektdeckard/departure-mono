@@ -4,6 +4,7 @@
     url("/assets/DepartureMono-Regular.woff2") format("woff2"),
     url("/assets/DepartureMono-Regular.woff") format("woff"),
     url("/assets/DepartureMono-Regular.otf") format("opentype");
+  font-feature-settings: "locl";
 }
 
 :root {

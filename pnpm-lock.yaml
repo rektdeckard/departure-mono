@@ -78,6 +78,9 @@ importers:
         specifier: ^1.8.18
         version: 1.8.19
     devDependencies:
+      '@types/node':
+        specifier: ^22.15.21
+        version: 22.15.21
       '@types/p5':
         specifier: ^1.7.6
         version: 1.7.6
@@ -92,13 +95,13 @@ importers:
         version: 5.5.4
       vite:
         specifier: ^5.3.4
-        version: 5.3.5
+        version: 5.3.5(@types/node@22.15.21)
       vite-plugin-node-polyfills:
         specifier: ^0.22.0
-        version: 0.22.0(vite@5.3.5)
+        version: 0.22.0(rollup@4.20.0)(vite@5.3.5(@types/node@22.15.21))
       vite-plugin-solid:
         specifier: ^2.10.2
-        version: 2.10.2(solid-js@1.8.19)(vite@5.3.5)
+        version: 2.10.2(solid-js@1.8.19)(vite@5.3.5(@types/node@22.15.21))
 
 packages:
 
@@ -642,6 +645,9 @@ packages:
 
   '@types/node@12.20.55':
     resolution: {integrity: sha512-J8xLz7q2OFulZ2cyGTLE1TbbZcjpno7FaN6zdJNrgAdrJ+DZzh/uFR6YrTb4C+nXakvud8Q4+rbhoIWlYQbUFQ==}
+
+  '@types/node@22.15.21':
+    resolution: {integrity: sha512-EV/37Td6c+MgKAbkcLG6vqZ2zEYHD7bvSrzqqs2RIhbA6w3x+Dqz8MZM3sP6kGTeLrdoOgKZe+Xja7tUB2DNkQ==}
 
   '@types/p5@1.7.6':
     resolution: {integrity: sha512-6pLTOo0V3N5jZb5nTwjiv3lPHLK3Z/TjbhQUj8CTWXocUk1Z/f6OHTp3Pcwi1BhWnf5gqKUcyEb1gP0KIJuQgw==}
@@ -1861,6 +1867,9 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
+  undici-types@6.21.0:
+    resolution: {integrity: sha512-iwDZqg0QAGrg9Rav5H4n0M64c3mkR59cJ6wQp+7C4nI0gsmExaedaYLNO44eT4AtBBwjbTiGPMlt2Md0T9H9JQ==}
+
   universalify@0.1.2:
     resolution: {integrity: sha512-rBJeI5CXAlmy1pV+617WB9J63U6XcazHHF2f2dbJix4XzpUF0RS3Zbj0FGIOCAva5P/d/GBOYaACQ1w+0azUkg==}
     engines: {node: '>= 4.0.0'}
@@ -2621,17 +2630,21 @@ snapshots:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.17.1
 
-  '@rollup/plugin-inject@5.0.5':
+  '@rollup/plugin-inject@5.0.5(rollup@4.20.0)':
     dependencies:
-      '@rollup/pluginutils': 5.1.0
+      '@rollup/pluginutils': 5.1.0(rollup@4.20.0)
       estree-walker: 2.0.2
       magic-string: 0.30.11
+    optionalDependencies:
+      rollup: 4.20.0
 
-  '@rollup/pluginutils@5.1.0':
+  '@rollup/pluginutils@5.1.0(rollup@4.20.0)':
     dependencies:
       '@types/estree': 1.0.5
       estree-walker: 2.0.2
       picomatch: 2.3.1
+    optionalDependencies:
+      rollup: 4.20.0
 
   '@rollup/rollup-android-arm-eabi@4.20.0':
     optional: true
@@ -2709,6 +2722,10 @@ snapshots:
   '@types/estree@1.0.5': {}
 
   '@types/node@12.20.55': {}
+
+  '@types/node@22.15.21':
+    dependencies:
+      undici-types: 6.21.0
 
   '@types/p5@1.7.6': {}
 
@@ -4312,6 +4329,8 @@ snapshots:
 
   typescript@5.5.4: {}
 
+  undici-types@6.21.0: {}
+
   universalify@0.1.2: {}
 
   universalify@2.0.1: {}
@@ -4341,15 +4360,15 @@ snapshots:
 
   validate-html-nesting@1.2.2: {}
 
-  vite-plugin-node-polyfills@0.22.0(vite@5.3.5):
+  vite-plugin-node-polyfills@0.22.0(rollup@4.20.0)(vite@5.3.5(@types/node@22.15.21)):
     dependencies:
-      '@rollup/plugin-inject': 5.0.5
+      '@rollup/plugin-inject': 5.0.5(rollup@4.20.0)
       node-stdlib-browser: 1.2.0
-      vite: 5.3.5
+      vite: 5.3.5(@types/node@22.15.21)
     transitivePeerDependencies:
       - rollup
 
-  vite-plugin-solid@2.10.2(solid-js@1.8.19)(vite@5.3.5):
+  vite-plugin-solid@2.10.2(solid-js@1.8.19)(vite@5.3.5(@types/node@22.15.21)):
     dependencies:
       '@babel/core': 7.25.2
       '@types/babel__core': 7.20.5
@@ -4357,22 +4376,23 @@ snapshots:
       merge-anything: 5.1.7
       solid-js: 1.8.19
       solid-refresh: 0.6.3(solid-js@1.8.19)
-      vite: 5.3.5
-      vitefu: 0.2.5(vite@5.3.5)
+      vite: 5.3.5(@types/node@22.15.21)
+      vitefu: 0.2.5(vite@5.3.5(@types/node@22.15.21))
     transitivePeerDependencies:
       - supports-color
 
-  vite@5.3.5:
+  vite@5.3.5(@types/node@22.15.21):
     dependencies:
       esbuild: 0.21.5
       postcss: 8.4.40
       rollup: 4.20.0
     optionalDependencies:
+      '@types/node': 22.15.21
       fsevents: 2.3.3
 
-  vitefu@0.2.5(vite@5.3.5):
-    dependencies:
-      vite: 5.3.5
+  vitefu@0.2.5(vite@5.3.5(@types/node@22.15.21)):
+    optionalDependencies:
+      vite: 5.3.5(@types/node@22.15.21)
 
   vm-browserify@1.1.2: {}
 
