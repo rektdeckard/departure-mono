@@ -55,7 +55,7 @@ Download the latest release from the [releases](https://github.com/rektdeckard/d
 
 For pixel-perfect results, set the font size to increments of 11px.
 
-Experiment with tighter tracking (letter-spacing) for a more comfortable read in some cases — or wider tracking for a sci-fi effect.
+Experiment with tighter or wider tracking (letter-spacing).
 
 ## Licenses
 
