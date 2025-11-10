@@ -1,0 +1,15 @@
+@font-face {
+  font-family: 'Departure Mono';
+  font-style: normal;
+  font-weight: 400;
+  src: url(./assets/DepartureMono-1.500.woff) format('woff'), url(./assets/DepartureMono-1.500.woff2) format('woff2');
+  unicode-range: U+0021–007D, U+00A1–00BF, U+00C0–00FF, U+0100–017F, U+0180–0199, U+01A0–01FF, U+0218–021F, U+0232–0233, U+0244, U+0253–0294, U+A78B–A78C, U+037A–03CE, U+0400–045F, U+0460–048F, U+0490–04FF, U+0500–0527, U+0E3F, U+0192, U+2030–203A, U+2044–2052, U+20A3–20BF, U+2113–212E, U+2190–21B5, U+2202–222B, U+2248–2265, U+2500–257F, U+2580–259F, U+25A0–25CC, U+2605–266C, U+2726–2727, U+276C–2771, U+1E00–1EFF, U+1FB82–1FB8B;
+}
+
+@font-face {
+  font-family: 'Departure Mono Regular';
+  font-style: normal;
+  font-weight: 400;
+  src: url(./assets/DepartureMono-Regular.woff) format('woff'), url(./assets/DepartureMono-Regular.woff2) format('woff2');
+  unicode-range: U+0021–007D, U+00A1–00BF, U+00C0–00FF, U+0100–017F, U+0180–0199, U+01A0–01FF, U+0218–021F, U+0232–0233, U+0244, U+0253–0294, U+A78B–A78C, U+037A–03CE, U+0400–045F, U+0460–048F, U+0490–04FF, U+0500–0527, U+0E3F, U+0192, U+2030–203A, U+2044–2052, U+20A3–20BF, U+2113–212E, U+2190–21B5, U+2202–222B, U+2248–2265, U+2500–257F, U+2580–259F, U+25A0–25CC, U+2605–266C, U+2726–2727, U+276C–2771, U+1E00–1EFF, U+1FB82–1FB8B;
+}

@@ -4,6 +4,7 @@
     <img src="https://github.com/rektdeckard/departure-mono/blob/main/public/assets/departure-og.png?raw=true" alt="Departure Mono" width="630">
   </a>
   <br>
+  <br>
     Departure Mono
   <br>
 </h1>
@@ -15,6 +16,23 @@
 Departure Mono is a monospaced pixel font inspired by the constraints of early command-line and graphical user interfaces, the tiny pixel fonts of the late 90s/early 00s, and sci-fi concepts from film and television.
 
 ## Installation
+
+If you're making a web thing, you can use the following HTML and CSS :
+
+```
+<!-- HTML in your document's head -->
+<link rel="preconnect" href="https://departuremono.com">
+<link rel="stylesheet" href="https://departuremono.com/mono.css">
+```
+
+```
+<!-- Import in CSS -->
+@import url("https://departuremono.com/mono.css");
+
+:root {
+  font-family: Departure Mono, monospace;
+}
+```
 
 ### Homebrew
 
