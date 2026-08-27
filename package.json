@@ -42,11 +42,17 @@
   "devDependencies": {
     "@types/node": "^22.15.21",
     "@types/p5": "^1.7.6",
+    "canvas": "^3.2.3",
     "gh-pages": "^6.1.1",
     "prettier": "^3.3.3",
     "typescript": "^5.2.2",
     "vite": "^5.3.4",
     "vite-plugin-node-polyfills": "^0.22.0",
     "vite-plugin-solid": "^2.10.2"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "canvas"
+    ]
   }
 }
