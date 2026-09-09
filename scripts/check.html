@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <style>
+      canvas {
+        image-rendering: pixelated;
+        image-rendering: crisp-edges;
+      }
+
+      canvas, img, .preview {
+        border: 1px solid;
+      }
+
+      map {
+        width: 100%;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: 1em;
+      }
+
+      .preview {
+        padding: 1em;
+        display: flex;
+        align-items: start;
+        gap: 1em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="preview">
+      <canvas width="224" height="448"></canvas>
+      <form method="get" accept-charset="UTF-8">
+        <label for="glyph">
+          Glyph
+          <input name="glyph" type="text" maxLength="1" />
+        </label>
+        <button type="submit">Show</button>
+        <img id="plane" style="width: 100%" src="/public/assets/DepartureMono-Regular-plane0.png" />
+      </form>
+    </div>
+    <script>
+      const WIDTH = 14;
+      const HEIGHT = 28;
+      const SCALE = 16;
+      const canvas = document.querySelector("canvas");
+      canvas.width = WIDTH * SCALE;
+      canvas.height = HEIGHT * SCALE;
+
+      const ctx = canvas.getContext("2d");
+      ctx.strokeStyle = "black";
+      ctx.imageSmoothingEnabled = false;
+
+      function decodeGlyphParam(value) {
+        if (value == null) return "A";
+        const match = value.match(/^&#(?:x([0-9a-f]+)|([0-9]+));$/i);
+        if (!match) {
+          return value;
+        }
+        const codePoint = match[1]
+          ? parseInt(match[1], 16)
+          : parseInt(match[2], 10);
+        return String.fromCodePoint(codePoint);
+      }
+
+      const params = new URLSearchParams(window.location.search);
+      let { glyph = "A" } = Object.fromEntries(params);
+      glyph = decodeGlyphParam(glyph);
+
+      const form = document.querySelector("form");
+      const glyphInput = document.querySelector("input[name='glyph']");
+      const cpInput = document.querySelector("input[name='cp']");
+      glyphInput.value = glyph;
+
+      const image = new Image();
+      const cp = glyph.codePointAt(0);
+      if (cp) {
+        const x = (cp & 0x00ff) * WIDTH;
+        const y = ((cp & 0xff00) >> 8) * HEIGHT;
+
+        image.crossOrigin = "anonymous";
+        image.onload = () => {
+          ctx.drawImage(
+            image,
+            x, y, WIDTH, HEIGHT,
+            0, 0, WIDTH * SCALE, HEIGHT * SCALE,
+          );
+          ctx.beginPath();
+          for (let i = 1; i < WIDTH; i++) {
+            ctx.moveTo(i * SCALE, 0);
+            ctx.lineTo(i * SCALE, HEIGHT * SCALE);
+          }
+          for (let j = 1; j < HEIGHT; j++) {
+            ctx.moveTo(0, j * SCALE);
+            ctx.lineTo(WIDTH * SCALE, j * SCALE);
+          }
+          ctx.stroke();
+        };
+        image.onerror = () => console.error("failed to load image");
+        image.src = "/public/assets/DepartureMono-Regular-plane0.png";
+      }
+
+      const plane = document.querySelector("#plane");
+      plane.onpointermove = (event) => {
+        const col = Math.floor((event.offsetX / event.target.clientWidth) * 0x100);
+        const row = Math.floor((event.offsetY / event.target.clientHeight) * 0x100);
+        const cp = col | (row << 8);
+        glyphInput.value = String.fromCodePoint(cp);
+
+        ctx.clearRect(0, 0, WIDTH * SCALE, HEIGHT * SCALE);
+        ctx.drawImage(
+          image,
+          col * WIDTH, row * HEIGHT, WIDTH, HEIGHT,
+          0, 0, WIDTH * SCALE, HEIGHT * SCALE,
+        );
+        ctx.beginPath();
+        for (let i = 1; i < WIDTH; i++) {
+          ctx.moveTo(i * SCALE, 0);
+          ctx.lineTo(i * SCALE, HEIGHT * SCALE);
+        }
+        for (let j = 1; j < HEIGHT; j++) {
+          ctx.moveTo(0, j * SCALE);
+          ctx.lineTo(WIDTH * SCALE, j * SCALE);
+        }
+        ctx.stroke();
+      }
+    </script>
+  </body>
+</html>

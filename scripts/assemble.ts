@@ -14,8 +14,6 @@ const PNG_SPRITE_SHEET_PATH = `${PNG_PATH_PREFIX}.png`;
 const DEFAULT_RENDER_OPTIONS: RenderOptions = {
   columns: 64,
   fontSize: FONT_SIZE,
-  cellWidth: FONT_SIZE / 2,
-  cellHeight: FONT_SIZE,
 };
 
 type CharEntry = {
@@ -28,8 +26,6 @@ type CharMap = Record<string, CharEntry[]>;
 type RenderOptions = {
   columns: number;
   fontSize: number;
-  cellWidth: number;
-  cellHeight: number;
 };
 
 type Atlas = Map<number, Set<number>>;
@@ -48,6 +44,31 @@ type Atlas = Map<number, Set<number>>;
     await fs.writeFile(path, buf);
   }
 })();
+
+function measureFont(inputPath: string, options?: RenderOptions) {
+  const opts: RenderOptions = {
+    ...DEFAULT_RENDER_OPTIONS,
+    ...options,
+  };
+
+  registerFont(inputPath, { family: FONT_FAMILY });
+
+  const canvas = createCanvas(1, 1);
+  const ctx = canvas.getContext("2d");
+  ctx.font = `${opts.fontSize}px "${FONT_FAMILY}"`;
+  ctx.textAlign = "left";
+  ctx.textBaseline = "alphabetic";
+
+  const metrics = ctx.measureText("█");
+  const cellWidth = Math.ceil(metrics.width);
+  const baselineOffset =
+    metrics.fontBoundingBoxAscent ?? metrics.actualBoundingBoxAscent;
+  const cellHeight = Math.ceil(
+    baselineOffset +
+      (metrics.fontBoundingBoxDescent ?? metrics.actualBoundingBoxDescent),
+  );
+  return { cellWidth, cellHeight, baselineOffset };
+}
 
 async function buildCharMap(charlistPath: string): Promise<CharMap> {
   const charlist = await fs.readFile(charlistPath, "utf-8");
@@ -109,28 +130,30 @@ function generatePlane(
 ): Buffer {
   // NOTE: this allows atlas lookup to be done by getting the cell from codepoint
   //       (<low-byte> * cellWidth, <high-byte> * cellHeight)
-  const ROWS = 0xff;
-  const COLUMNS = 0xff;
+  const ROWS = 0x100;
+  const COLUMNS = 0x100;
 
-  const base = 0xffff * plane;
+  const base = 0x10000 * plane;
   const opts = {
     ...DEFAULT_RENDER_OPTIONS,
     ...options,
   };
   registerFont(OTF_FONT_PATH, { family: FONT_FAMILY });
+  const { cellWidth, cellHeight } = measureFont(OTF_FONT_PATH, opts);
 
-  const canvas = createCanvas(COLUMNS * opts.cellWidth, ROWS * opts.cellHeight);
+  const canvas = createCanvas(COLUMNS * cellWidth, ROWS * cellHeight);
   const ctx = canvas.getContext("2d");
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.strokeStyle = "black";
   ctx.fillStyle = "black";
   ctx.font = `${opts.fontSize}px "${FONT_FAMILY}"`;
-  ctx.textBaseline = "top";
+  ctx.textAlign = "left";
+  ctx.textBaseline = "bottom";
 
   for (let i = 0; i <= 0xffff; i++) {
-    const x = (i & 0x00ff) * opts.cellWidth;
-    const y = ((i & 0xff00) >> 8) * opts.cellHeight;
+    const x = (i & 0x00ff) * cellWidth;
+    const y = (((i & 0xff00) >> 8) + 1) * cellHeight;
     const code = i + base;
 
     if (chars.has(code)) {
@@ -156,21 +179,23 @@ function generateSpriteSheet(
   const rows = Math.ceil(glyphs.length / opts.columns);
 
   registerFont(inputPath, { family: FONT_FAMILY });
-
-  const canvas = createCanvas(
-    opts.columns * opts.cellWidth,
-    rows * opts.cellHeight,
+  const { cellWidth, cellHeight, baselineOffset } = measureFont(
+    inputPath,
+    opts,
   );
+
+  const canvas = createCanvas(opts.columns * cellWidth, rows * cellHeight);
   const ctx = canvas.getContext("2d");
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.fillStyle = "black";
   ctx.font = `${opts.fontSize}px "${FONT_FAMILY}"`;
-  ctx.textBaseline = "top";
+  ctx.textAlign = "left";
+  ctx.textBaseline = "alphabetic";
 
   glyphs.forEach((glyph, i) => {
-    const x = (i % opts.columns) * opts.cellWidth;
-    const y = Math.floor(i / opts.columns) * opts.cellHeight;
+    const x = (i % opts.columns) * cellWidth;
+    const y = Math.floor(i / opts.columns) * cellHeight + baselineOffset;
 
     ctx.fillText(String.fromCodePoint(glyph.code), x, y);
   });
