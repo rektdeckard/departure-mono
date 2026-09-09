@@ -3,12 +3,27 @@
   <head>
     <meta charset="UTF-8">
     <style>
+      body {
+        font-family: monospace;
+      }
+
+      button {
+        font-family: monospace;
+      }
+
+      main {
+        padding: 1em;
+        display: flex;
+        align-items: start;
+        gap: 1em;
+      }
+
       canvas {
         image-rendering: pixelated;
         image-rendering: crisp-edges;
       }
 
-      canvas, img, .preview {
+      canvas, img {
         border: 1px solid;
       }
 
@@ -24,29 +39,31 @@
       }
 
       .preview {
-        padding: 1em;
         display: flex;
+        flex-direction: column;
         align-items: start;
         gap: 1em;
       }
     </style>
   </head>
   <body>
-    <div class="preview">
-      <canvas width="224" height="448"></canvas>
-      <form method="get" accept-charset="UTF-8">
-        <label for="glyph">
-          Glyph
-          <input name="glyph" type="text" maxLength="1" />
-        </label>
-        <button type="submit">Show</button>
-        <img id="plane" style="width: 100%" src="/public/assets/DepartureMono-Regular-plane0.png" />
-      </form>
-    </div>
+    <main>
+      <div class="preview">
+        <canvas width="224" height="448"></canvas>
+        <form method="get" accept-charset="UTF-8">
+          <label for="glyph">
+            Glyph
+            <input name="glyph" type="text" maxLength="1" />
+          </label>
+          <button type="submit">Show</button>
+        </form>
+      </div>
+      <img id="plane" style="width: 100%" src="/public/assets/DepartureMono-Regular-plane0.png" />
+    </main>
     <script>
-      const WIDTH = 14;
-      const HEIGHT = 28;
-      const SCALE = 16;
+      const WIDTH = 7;
+      const HEIGHT = 14;
+      const SCALE = 32;
       const canvas = document.querySelector("canvas");
       canvas.width = WIDTH * SCALE;
       canvas.height = HEIGHT * SCALE;
