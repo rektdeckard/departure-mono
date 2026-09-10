@@ -6,7 +6,9 @@ export function Sensor() {
   createEffect(() => {
     function scrollPercent() {
       const scroll = document.documentElement.scrollTop;
-      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const height =
+        document.documentElement.scrollHeight -
+        document.documentElement.clientHeight;
       setVal(100 - Math.round((scroll / height) * 100));
     }
 

@@ -1,7 +1,6 @@
 name: Build and deploy to DreamHost via sshpass
 
-on:
-  push
+on: push
 
 jobs:
   deploy:
@@ -19,7 +18,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'pnpm'
+          cache: "pnpm"
 
       - name: Install dependencies
         run: pnpm install

@@ -78,7 +78,7 @@ export function Deparkanoid() {
           autoPlay = !autoPlay;
         }
         if (e.key === "÷" && e.altKey) {
-          enableSounds = !enableSounds
+          enableSounds = !enableSounds;
         }
       });
       el.addEventListener("contextmenu", (e) => {

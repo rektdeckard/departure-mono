@@ -14,7 +14,7 @@ import "./tester.css";
 type CharEntry = {
   code: number;
   feat?: string[];
-}
+};
 
 type GlyphEntry = CharEntry & {
   glyf: TTF.Glyph;
@@ -44,23 +44,25 @@ export function Tester() {
   const gs = createMemo<Record<string, GlyphEntry[]>>(() => {
     const f = fk()?.get();
     if (!f) return {};
-    return Object.entries(cm as Record<Segment, CharEntry[]>).reduce<Record<string, GlyphEntry[]>>(
-      (acc, [segment, chars]) => {
-        const entries = chars
-          .map((entry) => ({ ...entry, glyf: f.glyf[f.cmap[entry.code.toString()]] }))
-          .filter((g) => {
-            if (import.meta.env.DEV && !g.glyf) {
-              console.warn(
-                `Missing glyph for 0x${g.code.toString(16).padStart(4, "0")}`,
-              );
-            }
-            return !!g.glyf;
-          });
-        acc[segment] = entries;
-        return acc;
-      },
-      {},
-    );
+    return Object.entries(cm as Record<Segment, CharEntry[]>).reduce<
+      Record<string, GlyphEntry[]>
+    >((acc, [segment, chars]) => {
+      const entries = chars
+        .map((entry) => ({
+          ...entry,
+          glyf: f.glyf[f.cmap[entry.code.toString()]],
+        }))
+        .filter((g) => {
+          if (import.meta.env.DEV && !g.glyf) {
+            console.warn(
+              `Missing glyph for 0x${g.code.toString(16).padStart(4, "0")}`,
+            );
+          }
+          return !!g.glyf;
+        });
+      acc[segment] = entries;
+      return acc;
+    }, {});
   });
 
   const [glyf, setGlyf] = createSignal<GlyphEntry | null>(null);
@@ -94,10 +96,17 @@ export function Tester() {
         <div id="glyph-specimen">
           <div class="specimen-details">
             <div style="display: flex; flex-direction: column;">
-              <span class="specimen-name">
-                {cdb()?.get(glyf()?.code!)}
+              <span class="specimen-name">{cdb()?.get(glyf()?.code!)}</span>
+              <span>
+                {glyf()
+                  ?.feat?.map(
+                    (ft) =>
+                      FONT_FEATURE_MAP[ft as keyof typeof FONT_FEATURE_MAP],
+                  )
+                  .filter(Boolean)
+                  .join(", ")
+                  .toUpperCase()}
               </span>
-              <span>{glyf()?.feat?.map((ft) => FONT_FEATURE_MAP[ft as keyof typeof FONT_FEATURE_MAP]).filter(Boolean).join(", ").toUpperCase()}</span>
             </div>
             <span>
               U+

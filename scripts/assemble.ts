@@ -109,7 +109,7 @@ function parseCharWithOptionalFeatures(line: string): CharEntry {
 }
 
 function charCodeToPlane(code: number): number {
-  return Math.floor(code / 0xffff);
+  return Math.floor(code / 0x10000);
 }
 
 function getPlanePath(plane: number) {
@@ -222,9 +222,9 @@ function createBDF(atlas: Atlas, options?: RenderOptions): BDFFont {
     ...options,
   };
 
-  const codepoints = Array.from(atlas.values()).flatMap((set) =>
-    Array.from(set),
-  );
+  const codepoints = Array.from(atlas.values())
+    .flatMap((set) => Array.from(set))
+    .sort((a, b) => a - b);
 
   registerFont(OTF_FONT_PATH, { family: FONT_FAMILY });
   const { cellWidth, cellHeight, baselineOffset } = measureFont(
@@ -252,6 +252,22 @@ function createBDF(atlas: Atlas, options?: RenderOptions): BDFFont {
       FONT_ASCENT: baselineOffset,
       FONT_DESCENT: cellHeight - baselineOffset,
     },
+    characters: [
+      {
+        name: `U+${" ".codePointAt(0)!.toString(16).padStart(4, "0")}`,
+        encoding: " ".codePointAt(0)!,
+        bitmap: Array.from<number>({ length: cellHeight }).fill(0),
+        sWidth: { width: 500, height: 0 },
+        dWidth: { width: cellWidth, height: 0 },
+        // TODO: optimize bounding box to actual glyph size
+        bbx: {
+          width: cellWidth,
+          height: cellHeight,
+          xOffset: 0,
+          yOffset: baselineOffset - cellHeight,
+        },
+      },
+    ],
   });
 
   const canvas = createCanvas(cellWidth, cellHeight);
@@ -261,22 +277,29 @@ function createBDF(atlas: Atlas, options?: RenderOptions): BDFFont {
   ctx.font = `${opts.fontSize}px "${FONT_FAMILY}"`;
   ctx.textAlign = "left";
   ctx.textBaseline = "alphabetic";
+  ctx.imageSmoothingEnabled = false;
 
   codepoints.forEach((cp) => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillText(String.fromCodePoint(cp), 0, 0);
+    ctx.fillText(String.fromCodePoint(cp), 0, baselineOffset);
 
     const data = ctx.getImageData(0, 0, cellWidth, cellHeight);
+    const bytesPerRow = Math.ceil(cellWidth / 8);
+    const paddingBits = bytesPerRow * 8 - cellWidth;
+
     const bitmap = Array.from({ length: cellHeight }, (_, row) => {
       let rowBits = 0;
+
       for (let col = 0; col < cellWidth; col++) {
         const index = (row * cellWidth + col) * 4;
         const alpha = data.data[index + 3];
+
         if (alpha > 128) {
           rowBits |= 1 << (cellWidth - 1 - col);
         }
       }
-      return rowBits;
+
+      return rowBits << paddingBits;
     });
 
     bdf.addCharacter({
@@ -290,7 +313,7 @@ function createBDF(atlas: Atlas, options?: RenderOptions): BDFFont {
         width: cellWidth,
         height: cellHeight,
         xOffset: 0,
-        yOffset: 0,
+        yOffset: baselineOffset - cellHeight,
       },
     });
   });

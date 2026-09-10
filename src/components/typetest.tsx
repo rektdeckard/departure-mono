@@ -56,8 +56,9 @@ function TypeSample(props: TypeSampleProps) {
         contenteditable
         spellcheck={false}
         children={props.copy}
-        style={`font-size: ${props.size}px; ${props.tracking ? `letter-spacing: ${props.tracking}px` : ""
-          }`}
+        style={`font-size: ${props.size}px; ${
+          props.tracking ? `letter-spacing: ${props.tracking}px` : ""
+        }`}
       />
     </div>
   );

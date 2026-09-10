@@ -222,10 +222,7 @@ export class BDFFont {
             : null,
           `BITMAP`,
           ...char.bitmap.map((row) =>
-            row
-              .toString(16)
-              .toUpperCase()
-              .padStart(Math.ceil(char.bbx?.width ?? 0 / 4), "0"),
+            row.toString(16).toUpperCase().padStart(2, "0"),
           ),
           `ENDCHAR`,
         ])

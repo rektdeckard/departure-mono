@@ -59,8 +59,7 @@ Experiment with tighter or wider tracking (letter-spacing).
 
 ## Licenses
 
-| Resource | License | Author   |
-| -------- | ------- | -------- |
-| Font     | [SIL OFL](https://github.com/rektdeckard/departure-mono/blob/main/public/assets/LICENSE?raw=true) | [Helena Zhang](https://helenazhang.com) |
-| Site     | [MIT](https://github.com/rektdeckard/departure-mono/blob/main/LICENSE?raw=true)     | [Helena Zhang](https://helenazhang.com), [Tobias Fried](https://tobiasfried.com) |
-
+| Resource | License                                                                                           | Author                                                                           |
+| -------- | ------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| Font     | [SIL OFL](https://github.com/rektdeckard/departure-mono/blob/main/public/assets/LICENSE?raw=true) | [Helena Zhang](https://helenazhang.com)                                          |
+| Site     | [MIT](https://github.com/rektdeckard/departure-mono/blob/main/LICENSE?raw=true)                   | [Helena Zhang](https://helenazhang.com), [Tobias Fried](https://tobiasfried.com) |

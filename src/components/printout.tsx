@@ -35,7 +35,13 @@ export function Printout(props: PrintoutProps) {
         d="M943 0H944V648H943V0Z"
         fill={Colors[local.color ?? "white"][1]}
       />
-      <foreignObject x="68" y="0" width="875" height="648" style="overflow-y: clip">
+      <foreignObject
+        x="68"
+        y="0"
+        width="875"
+        height="648"
+        style="overflow-y: clip"
+      >
         {local.children}
       </foreignObject>
     </svg>

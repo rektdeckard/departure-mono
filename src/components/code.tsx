@@ -3,24 +3,28 @@ import { Sensor } from "./sensor";
 import "./code.css";
 
 export function Code() {
-   return (
-      <div id="code" class="maxwidth">
-         <img id="mercury-diagram" src="/assets/mercury-diagram.svg" />
-         <img id="code-rust" src="/assets/rust.svg" />
-         <img id="code-sql" src="/assets/sql.svg" />
-         <Sensor />
-         <p class="comment">
-            ░{"  "}ADD A RETRO FLAVOR
-            <br />░{"  "}TO YOUR CODE AND
-            <br />░{"  "}TECHNICAL DOCUMENTATION
-         </p>
-         <Printout id="mission-report" class="light" color="grey">
-            <pre contenteditable spellcheck={false} style="font-size: 13.75px; max-height: calc(100% - 88px); overflow-y: clip">
-               {altMissionReport}
-            </pre>
-         </Printout>
-      </div>
-   );
+  return (
+    <div id="code" class="maxwidth">
+      <img id="mercury-diagram" src="/assets/mercury-diagram.svg" />
+      <img id="code-rust" src="/assets/rust.svg" />
+      <img id="code-sql" src="/assets/sql.svg" />
+      <Sensor />
+      <p class="comment">
+        ░{"  "}ADD A RETRO FLAVOR
+        <br />░{"  "}TO YOUR CODE AND
+        <br />░{"  "}TECHNICAL DOCUMENTATION
+      </p>
+      <Printout id="mission-report" class="light" color="grey">
+        <pre
+          contenteditable
+          spellcheck={false}
+          style="font-size: 13.75px; max-height: calc(100% - 88px); overflow-y: clip"
+        >
+          {altMissionReport}
+        </pre>
+      </Printout>
+    </div>
+  );
 }
 
 const altMissionReport = `\
@@ -104,7 +108,7 @@ can be conducted.
 `;
 
 const extras = {
-   download: `\
+  download: `\
 Suspended ───► Queued ───► Connecting ────► Transferring ───► Transferred     
     │             ▲            │                │                 │           
     │             │            │                │                 │ (complete)
@@ -118,7 +122,7 @@ Suspended ───► Queued ───► Connecting ────► Transferri
                   │      (resume)      │             │                        
                   └────────────────────┘             └──► Cancelled           \
 `,
-   flow: `\
+  flow: `\
 ┌───────────────────────────────┐             
 │random                         │             
 └┬─────────────┬─────────────┬─┬┘             
@@ -137,7 +141,7 @@ Suspended ───► Queued ───► Connecting ────► Transferri
 │strings│                                     
 └───────┘                                     \
 `,
-   airline: `\
+  airline: `\
 │ Flight  │ Airline          │ Destination          │ Departure Time  │ Gate  │ Status     │
 ├─────────┼──────────────────┼──────────────────────┼─────────────────┼───────┼────────────┤
 │ DL123   │ Delta Air Lines  │ LAX (Los Angeles)    │ 08:00           │ 22    │ On Time    │

@@ -101,8 +101,8 @@ export function Cockpit() {
     return `${hs.toString().padStart(2, "0")}:${ms
       .toString()
       .padStart(2, "0")}:${ss.toString().padStart(2, "0")}:${cs
-        .toString()
-        .padStart(2, "0")}`;
+      .toString()
+      .padStart(2, "0")}`;
   };
 
   const tempString = () => {
@@ -704,7 +704,11 @@ Y ${y().toString().padStart(3, "0")}
               <path d="M953.477 566V568H943.477V566H953.477ZM957.484 560H959.484V566H961.484V568H959.484V572H957.484V560ZM959.484 572H965.484V574H959.484V572ZM959.484 558H965.484V560H959.484V558ZM965.484 560H967.484V572H965.484V564H963.484V562H965.484V560ZM961.484 564H963.484V566H961.484V564ZM973.492 558H979.492V560H973.492V558ZM971.492 560H973.492V564H979.492V566H973.492V572H971.492V560ZM979.492 566H981.492V572H979.492V566ZM973.492 572H979.492V574H973.492V572ZM979.492 560H981.492V562H979.492V560Z" />
             </g>
           </g>
-          <path d="M989.5 302.75L998.5 308.75V296.75L989.5 302.75Z" fill="currentcolor" transform="translate(2, 0)" />
+          <path
+            d="M989.5 302.75L998.5 308.75V296.75L989.5 302.75Z"
+            fill="currentcolor"
+            transform="translate(2, 0)"
+          />
           <g fill="currentColor" mask="url(#lmask)">
             <foreignObject x="204" y="27" width="60" height="560">
               <div
