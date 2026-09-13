@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.500.0",
   "type": "module",
-  "packageManager": "pnpm@10.6.3",
+  "packageManager": "pnpm@12.4.1",
   "scripts": {
     "predev": "pnpm run assemble",
     "dev": "vite",
@@ -12,7 +12,7 @@
     "format": "prettier --write --ignore-unknown .",
     "prettier:check": "prettier --check --ignore-unknown .",
     "preview": "vite preview",
-    "assemble": "pnpm dlx tsx ./scripts/assemble.ts"
+    "assemble": "pnpm dlx --allow-build=esbuild tsx ./scripts/assemble.ts"
   },
   "dependencies": {
     "@ark-ui/solid": "^3.6.2",
