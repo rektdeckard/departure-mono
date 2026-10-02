@@ -6,9 +6,9 @@ Thanks for trying Departure Mono (departuremono.com), licensed under the SIL OFL
 
 # Font Information
 
-Version 1.500 features 1,186 glyphs, including support for:
+Version 1.501 features 1,262 glyphs, including support for:
 
-- Basic Latin, Latin-1, Latin Extended-A, and most Latinate languages
+- Basic Latin, Latin-1, Latin Extended-A, Vietnamese, and most Latinate languages
 - Cyrillic
 - Basic Greek
 - Small caps
@@ -22,6 +22,11 @@ For pixel-perfect results, set the font size to increments of 11px.
 Experiment with tighter or wider tracking (letter-spacing).
 
 # Changelog
+
+v1.501
+- 1,262 glyphs
+- Added the remaining Vietnamese letters: ả ắ ằ ẳ ẵ ặ ấ ầ ẩ ẫ ậ ẻ ế ề ể ễ ệ ỉ ỏ ố ồ ổ ỗ ộ ơ ớ ờ ở ỡ ợ ủ ứ ừ ử ữ ự ỷ ỵ and uppercase
+- Redrawn the Vietnamese capitals that carry both a vowel mark and a tone (Ầ Ấ Ẩ Ẫ, Ằ Ắ Ẳ Ẵ, Ề Ế Ể Ễ, Ồ Ố Ổ Ỗ, Ờ Ớ Ở Ỡ, Ừ Ứ Ử Ữ). The tone now sits above the circumflex, breve, or horn, with a gap between the mark and the letter.
 
 v1.500
 - 1,186 glyphs
